@@ -11,8 +11,7 @@
         <div class="card-body">
           <h2 class="card-title fs-4 text-center">Login</h2>
           <form
-            class="my-3"
-            [formGroup]="loginForm"
+            class="my-3" [formGroup]="loginForm"
             (ngSubmit)="onFormSubmit()">
           <label>Username</label>
             <div class="input-group mb-3 has-validation">
@@ -25,7 +24,7 @@
                   placeholder="input your username"
                   formControlName="username"
                 />
-                <div class="invalid-feedback" validation-message [control]="loginForm.controls['username']" label="username"></div>
+                <div class="invalid-feedback" validation-message[control]="loginForm.controls['username']" label="username"></div>
             </div>
             <label>Password</label>
             <div class="input-group mb-3 has-validation">
@@ -38,7 +37,7 @@
                   placeholder="input your password"
                   formControlName="password"
                 />
-                <div class="invalid-feedback" validation-message [control]="loginForm.controls['password']" label="password"></div>
+                <div class="invalid-feedback" validation-message[control]="loginForm.controls['password']" label="password"></div>
             </div>
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
