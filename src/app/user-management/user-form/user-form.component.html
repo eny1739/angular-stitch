@@ -1,0 +1,28 @@
+
+<form action="" [formGroup]="bookingGroup">
+    <div class="row">
+        <div class="col-sm-5" formGroupName="reservee">
+            <div class="mb-3">
+                <input formControlName="username"  type="text" class="form-control" id="exampleFormControlInput1" placeholder="username">
+            </div>
+            <div class="mb-3">
+                <input formControlName="password"  type="password" class="form-control" id="exampleFormControlInput1" placeholder="password">
+            </div>
+            <div class="mb-3">
+                <input formControlName="fullName"  type="text" class="form-control" id="exampleFormControlInput1" placeholder="fullName">
+            </div>
+            <div class="mb-3">
+                <input formControlName="email"  type="email" class="form-control" id="exampleFormControlInput1" placeholder="email">
+            </div>
+            <div class="mb-3">
+                <input formControlName="phone"  type="text" class="form-control" id="exampleFormControlInput1" placeholder="phone">
+            </div>
+        </div>
+       
+        <div class="col-sm-2">
+            <button class="btn btn-primary" (click)="onSubmitReservation()" [disabled]="bookingGroup.invalid"><i class="fas fa-save"></i></button>
+            <button class="btn btn-danger" (click)="onFormReset()"><i class="fas fa-trash"></i></button>
+        </div>
+    </div>
+</form>
+
