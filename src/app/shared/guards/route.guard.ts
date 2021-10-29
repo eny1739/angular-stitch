@@ -1,20 +1,30 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RouteGuard implements CanActivate, CanActivateChild {
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+  constructor(private readonly router:Router){}
+  
+  canActivate():boolean{
+    return this.authorize()
   }
-  canActivateChild(
-    childRoute: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+
+  canActivateChild():boolean{
+    return this.authorize()
+  }
+
+  private authorize():boolean{
+    const authorize:boolean = (sessionStorage.getItem('token') !== null)
+
+    if(!authorize){
+      alert('Mohon maaf anda harus login terlebih dahulu')
+      this.router.navigateByUrl('/')
+    }
+
+    return authorize;
   }
   
 }

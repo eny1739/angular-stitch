@@ -79,7 +79,8 @@
               "browserTarget": "task-hotel-app:build:production"
             },
             "development": {
-              "browserTarget": "task-hotel-app:build:development"
+              "browserTarget": "task-hotel-app:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
