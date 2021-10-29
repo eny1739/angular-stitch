@@ -29,7 +29,7 @@ export class GuestBookComponent implements OnInit {
   guestForm: FormGroup = new FormGroup({
     name: new FormControl(null, [Validators.required]),
     email: new FormControl(null, [Validators.required, Validators.email]),
-    message: new FormControl(null, [Validators.required]),
+    message: new FormControl(" "),
 
   })
 

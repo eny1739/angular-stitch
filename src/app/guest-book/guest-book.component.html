@@ -50,16 +50,10 @@
                   rows="10"
                   type="text"
                   class="form-control"
-                  [ngClass]="isFieldValid('message')"
                   placeholder="Message"
                   formControlName="message"
                 ></textarea>
-                <div
-                  class="invalid-feedback"
-                  validation-message
-                  [control]="guestForm.controls['message']"
-                  [fieldLabel]="'message'"
-                ></div>
+                <div class="invalid-feedback"></div>
               </div>
             </div>
           </div>
