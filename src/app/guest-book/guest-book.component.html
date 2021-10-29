@@ -1,0 +1,85 @@
+<div class="container my-3 mb-3">
+  <div class="row">
+    <div class="card bg-app">
+      <div class="card-header">Guest Book</div>
+      <div class="card-body">
+        <form [formGroup]="guestForm" (ngSubmit)="onSubmit()">
+          <div class="row mb-3">
+            <div class="col">
+              <div class="input-group mb-3 has-validation">
+                <input
+                  type="text"
+                  class="form-control"
+                  [ngClass]="isFieldValid('name')"
+                  placeholder="Name"
+                  formControlName="name"
+                />
+                <div
+                  class="invalid-feedback"
+                  validation-message
+                  [control]="guestForm.controls['name']"
+                  [fieldLabel]="'name'"
+                ></div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="input-group mb-3 has-validation">
+                <input
+                  type="email"
+                  class="form-control"
+                  [ngClass]="isFieldValid('email')"
+                  placeholder="Email Address"
+                  formControlName="email"
+                />
+                <div
+                  class="invalid-feedback"
+                  validation-message
+                  [control]="guestForm.controls['email']"
+                  [fieldLabel]="'email'"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="input-group mb-3 has-validation">
+                <textarea
+                  name=""
+                  id=""
+                  cols="30"
+                  rows="10"
+                  type="text"
+                  class="form-control"
+                  [ngClass]="isFieldValid('message')"
+                  placeholder="Message"
+                  formControlName="message"
+                ></textarea>
+                <div
+                  class="invalid-feedback"
+                  validation-message
+                  [control]="guestForm.controls['message']"
+                  [fieldLabel]="'message'"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 text-center">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="guestForm.invalid"
+              >
+                Submit
+              </button>
+              <button type="reset" class="btn btn-outline-secondary mx-1">
+                <i class="fas fa-undo-alt"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
