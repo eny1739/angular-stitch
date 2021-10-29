@@ -86,5 +86,20 @@ export class GuestBookComponent implements OnInit {
     }, () => {}
     )
   }
+
+  onDelete(id: string):void{
+    this.guestService.delete(id)
+      .pipe(
+        switchMap(() => this.guestService.getAll())
+      )
+      .subscribe((guests: any) => {
+        console.log('guest deleted');
+        this.guests = guests;
+      }, (error) => {
+        console.error(error);
+        
+      }, () => {}
+      )
+  }
   
 }

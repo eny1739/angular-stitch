@@ -35,5 +35,9 @@ export class GuestBookService {
     }
   }
 
-  
+  public delete(id: string): Observable<void>{
+    return this.http.delete<void>(`/api/guest-book/${id}`);
+  }
+
+
 }
