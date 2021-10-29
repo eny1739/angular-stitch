@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
+import { GuestBook } from './model/guest-book';
 import { GuestBookService } from './services/guest-book.service';
 
 @Component({
@@ -14,8 +15,16 @@ export class GuestBookComponent implements OnInit {
   constructor(private readonly guestService: GuestBookService, private readonly activatedRoute: ActivatedRoute, private readonly router: Router) { }
 
   ngOnInit(): void {
-    
+    this.getAll();
+    this.guestService.listUpdated()
+      .subscribe((updated: boolean) => {
+        if(updated){
+          this.getAll();
+        }
+      })
   }
+
+  guests: GuestBook[] = [];
 
   guestForm: FormGroup = new FormGroup({
     name: new FormControl(null, [Validators.required]),
@@ -63,5 +72,19 @@ export class GuestBookComponent implements OnInit {
     return classes;
   }
   
+  isLoggedIn(): boolean {
+    return (sessionStorage.getItem('token') !== null)
+  }
+
+  getAll(){
+    this.guestService.getAll()
+    .pipe()
+    .subscribe((guests) => {
+      this.guests = guests;
+    }, (error) => {
+      console.error(error);
+    }, () => {}
+    )
+  }
   
 }

@@ -83,3 +83,47 @@
     </div>
   </div>
 </div>
+<div class="container my-3 mb-3" *ngIf="isLoggedIn()">
+  <div class="row">
+    <div class="card bg-app">
+      <div class="card-header">Guest List</div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table text-center">
+            <thead class="">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email Address</th>
+                <th scope="col">Message</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="align-middle" *ngFor="let guest of guests">
+                <td>{{ guest.id }}</td>
+                <td>{{ guest.name | titlecase }}</td>
+                <td>{{ guest.email }}</td>
+                <td>{{ guest.message }}</td>
+
+                <td>
+                  <div class="btn-group">
+                    <button
+                      class="btn btn-warning"
+                      title="Edit"
+                      [routerLink]="['/']"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger" title="Delete">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,19 +1,10 @@
 {
-<<<<<<< HEAD
-    "/api": {
-        "target": "https://dev.enigmacamp.com/trainings/api/",
-        "logLevel": "debug",
-        "changeOrigin": true,
-        "pathRewrite": {
-            "^/api": ""
-=======
     "/api":{
         "target":"https://dev.enigmacamp.com/trainings/api/",
         "logLevel":"debug",
         "changeOrigin":true,
         "pathRewrite":{
             "^/api":""
->>>>>>> 5e7e751a845d17c642f44b42352737dd153a256d
         }
     }
 }
