@@ -16,8 +16,9 @@ export class GuestBookComponent implements OnInit {
   constructor(private readonly guestService: GuestBookService, private readonly activatedRoute: ActivatedRoute, private readonly router: Router) { }
 
   ngOnInit(): void {
-    this.getAll();
-    this.guestService.listUpdated()
+    if(this.isLoggedIn()){
+      this.getAll();
+      this.guestService.listUpdated()
       .subscribe((updated: boolean) => {
         if(updated){
           this.getAll();
@@ -25,6 +26,7 @@ export class GuestBookComponent implements OnInit {
       })
 
       this.activatedRoute.params.pipe().subscribe({ next:()=> this.getForm()})
+    }
   }
 
   guests: GuestBook[] = [];
@@ -38,14 +40,22 @@ export class GuestBookComponent implements OnInit {
 
 
   onSubmit(): void{
-    const guest =  this.guestForm.value;
-    this.guestService.save(guest).pipe(
-      switchMap(()=> this.guestService.getAll())
-    ).subscribe({
-      next: () => {},
-      error: console.error,
-      complete: () => {}
-    })
+    const guest = this.guestForm.value;
+    if(this.isLoggedIn()){
+      this.guestService.save(guest).pipe(
+        switchMap(()=> this.guestService.getAll())
+      ).subscribe({
+        next: () => {},
+        error: console.error,
+        complete: () => {}
+      })
+    } else if(!this.isLoggedIn()) {
+      this.guestService.save(guest).pipe().subscribe({
+        next: () => {},
+        error: console.error,
+        complete: () => {}
+      })
+    }
 
     this.guestForm.reset();
     this.router.navigateByUrl(`/guest-book`)
