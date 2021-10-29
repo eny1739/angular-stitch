@@ -21,6 +21,10 @@ export class GuestBookService {
     return this.http.get<GuestBook[]>("/api/guest-book");
   }
 
+  public getById(id: string): Observable<GuestBook>{
+    return this.http.get<GuestBook>(`/api/guest-book/${id}`);
+  }
+
   public save(guestBook: GuestBook): Observable<void> {
     if (guestBook.id) {
       return this.http.put<GuestBook>(`/api/guest-book/`, guestBook)

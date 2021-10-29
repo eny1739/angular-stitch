@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { EMPTY } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { GuestBook } from './model/guest-book';
 import { GuestBookService } from './services/guest-book.service';
@@ -22,6 +23,8 @@ export class GuestBookComponent implements OnInit {
           this.getAll();
         }
       })
+
+      this.activatedRoute.params.pipe().subscribe({ next:()=> this.getForm()})
   }
 
   guests: GuestBook[] = [];
@@ -100,6 +103,38 @@ export class GuestBookComponent implements OnInit {
         
       }, () => {}
       )
+  }
+
+  getForm(){
+    this.activatedRoute.params.pipe(
+      map((params) => params.id),
+      switchMap((id: string) => {
+        if(!id){
+          return EMPTY;
+        } 
+        else{
+          return this.guestService.getById(id);
+        } 
+      })
+      )
+      .subscribe((guest: GuestBook) => {
+        if(guest){
+            this.setFormValues(guest)
+        }
+      },  (error) => {
+        console.error(error);
+        
+      }, () => {}
+      )
+  }
+
+  setFormValues(guest: GuestBook): void{
+    this.guestForm.addControl("id", new FormControl());
+    this.guestForm.get("id")?.setValue(guest.id);
+    this.guestForm.get('name')?.setValue(guest.name);
+    this.guestForm.get('email')?.setValue(guest.email);
+    this.guestForm.get('message')?.setValue(guest.message);
+
   }
   
 }
