@@ -36,7 +36,6 @@ export class DonateFormComponent implements OnInit {
     this.donationForm.reset()
   }
 
-  // submit sementara
   onSubmitDonations():void{
     const donation:Donation = this.donationForm.value;
 
