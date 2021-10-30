@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observer } from 'rxjs';
 import { delay, switchMap } from 'rxjs/operators';
 import { User } from '../models/user-management.interface';
@@ -15,7 +16,7 @@ export class UserListComponent implements OnInit {
   loading: boolean = false
   subcriber?: Observer<any> 
 
-  constructor(private readonly userService: UserTodoService) { }
+  constructor(private readonly userService: UserTodoService, private readonly router:Router) { }
 
   ngOnInit(): void {
     this.getAll();
@@ -45,6 +46,7 @@ export class UserListComponent implements OnInit {
     this.subcriber = {
       next: (user: User) => {
         console.log('user update');
+        this.router.navigateByUrl(`/user-management/${user.id}`)
       },
       error: console.error,
       complete: () => {this.loading=false}

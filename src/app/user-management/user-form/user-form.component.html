@@ -99,8 +99,8 @@
   
   <div class="row">
   <div class="col-6 justify-content-center" style="margin-top: -80px; margin-left: 150px;">
-    <button class="btn btn-primary ms-5 " (click)="onSubmitUser" [disabled]="userForm.invalid"><i class="fas fa-save"></i></button>
-    <button class="btn btn-danger ms-3" (click)="onReset" [disabled]="userForm.invalid"><i class="fas fa-trash"></i></button>
+    <button class="btn btn-primary ms-5 " (click)="onSubmitUser()" [disabled]="userForm.invalid"><i class="fas fa-save"></i></button>
+    <button type="reset" class="btn btn-danger ms-3" (click)="onReset" [disabled]="userForm.invalid"><i class="fas fa-trash"></i></button>
   </div>
   </div>
 </form>

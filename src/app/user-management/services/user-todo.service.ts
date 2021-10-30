@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { retry } from 'rxjs/operators';
+import { map, retry, switchMap } from 'rxjs/operators';
 import { User } from '../models/user-management.interface';
 
 @Injectable({
@@ -16,27 +16,29 @@ export class UserTodoService {
 
   public getAllUser(): Observable<User[]> {
     return this.http.get<User[]>(`api/users`)
-    .pipe(retry(3))
+    .pipe()
   }
 
   public getUserById(id: string): Observable<User> {
     return this.http.get<User>(`api/users/${id}`)
   }
   
-  public saveUser(user: User): Observable<User> {
+  public saveUser(user: User): Observable<any> {
     if(!user.id) {
-      return this.http.post<any>(`api/users`, user)
-      .pipe(retry(3))
+      return this.http.post<User>(`api/users`, user)
+      .pipe(
+        map((data)=> this.userSubject.next(true)),
+      )
     } else {
       console.log(user);
       return this.http.put<User>(`api/users`, user)
-      .pipe(retry(3))
+      .pipe()
     }
   }
 
   public deleteUser(id: string): Observable<void> {
     return this.http.delete<void> (`api/users/${id}`)
-    .pipe(retry(3))
+    .pipe()
   }
 
   listUpdatedUser(): Observable<boolean> {

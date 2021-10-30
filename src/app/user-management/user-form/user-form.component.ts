@@ -26,9 +26,8 @@ export class UserFormComponent implements OnInit {
 
   user?: User;
   message?: AlertMessage;
-
+  id!: string;
   userForm: FormGroup = new FormGroup({
-    id!: new FormControl(),
     username: new FormControl(null, [Validators.required, Validators.minLength(5)]),
     password: new FormControl(null, [Validators.required, Validators.minLength(5)]),
     fullName: new FormControl(null, [Validators.required, Validators.minLength(5)]),
@@ -47,7 +46,7 @@ export class UserFormComponent implements OnInit {
         delay(500),
         switchMap((id: string) => {
           if (!id) return EMPTY;
-          else return this.userService.getUserById(id)
+          else return this.id = id,  this.userService.getUserById(id)
         })
       )
       .subscribe(
@@ -61,6 +60,8 @@ export class UserFormComponent implements OnInit {
   }
 
   setFormValues(user: User): void {
+    this.userForm.addControl('id', new FormControl(''));
+    this.userForm.get('id')?.setValue(this.id)
     this.userForm.get('username')?.setValue(user.username);
     this.userForm.get('password')?.setValue(user.password);
     this.userForm.get('fullName')?.setValue(user.fullName);
@@ -69,15 +70,27 @@ export class UserFormComponent implements OnInit {
   }
 
   onSubmitUser(): void {
-    const user: User = this.userForm.value;
+    // const user: User = this.userForm.value;
 
-    console.log('user form value:', user, this);
+    // console.log('user form value:', user, this);
 
-    this.userService.saveUser(user)
-      .subscribe(() => {
-        this.router.navigateByUrl('/user-mangement')
-      }, console.error)
-    this.onReset()
+    // this.userService.saveUser(user)
+    //   .subscribe(() => {
+    //     this.router.navigateByUrl('/user-mangement')
+    //   }, console.error)
+    // this.onReset()
+
+    const user =  this.userForm.value;
+    this.userService.saveUser(user).pipe(
+      // switchMap(()=> this.userService.getAll())
+    ).subscribe({
+      next: () => {},
+      error: console.error,
+      complete: () => {}
+    })
+
+    this.userForm.reset();
+    this.router.navigateByUrl(`/user-management`)
   }
 
   onReset(): void {

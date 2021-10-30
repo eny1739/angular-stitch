@@ -21,8 +21,8 @@
         <td>{{element.phone}}</td>
         <td>
       
-            <button class="btn btn-warning" (click)="onCheckTodo">edit</button>
-            <button class="btn btn-danger" (click)="onDeleteTodo" >delete</button>
+            <button class="btn btn-warning" (click)="onCheckTodo(element)">edit</button>
+            <button class="btn btn-danger" (click)="onDeleteTodo(element.id!)" >delete</button>
         </td>
       </tr>
     </tbody>
