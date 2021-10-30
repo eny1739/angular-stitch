@@ -13,7 +13,9 @@ export class DonateListComponent implements OnInit {
   donations:Donation[] = [];
   currentDate:Date = new Date()
   loading:boolean = false;
-  subscriber!:Observer<any>
+  subscriber!:Observer<any>;
+  totalDonation:number = 0;
+
 
   constructor(private readonly donateService:DonateService) { }
 
@@ -27,10 +29,19 @@ export class DonateListComponent implements OnInit {
     })
   }
 
+  // sumAmount():number {
+  //   this.getAll();
+  //   for(let )
+  //   return 2
+  // }
+
   getAll():void{
     this.subscriber = {
       next:(donations) =>{
         this.donations = donations
+        donations.forEach((donation: any): void => {
+          this.totalDonation += donation.amount
+        });
       },
       error:console.error,
       complete:()=>{this.loading = false}

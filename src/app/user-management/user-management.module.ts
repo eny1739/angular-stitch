@@ -5,6 +5,9 @@ import { UserManagementRoutingModule } from './user-management-routing.module';
 import { UserManagementComponent } from './user-management.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { SharedModule } from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserTodoService } from './services/user-todo.service';
 
 
 @NgModule({
@@ -15,7 +18,13 @@ import { UserListComponent } from './user-list/user-list.component';
   ],
   imports: [
     CommonModule,
-    UserManagementRoutingModule
+    UserManagementRoutingModule,
+    SharedModule,
+    ReactiveFormsModule,
+    FormsModule
+  ],
+  providers:[
+    UserTodoService
   ]
 })
 export class UserManagementModule { }
