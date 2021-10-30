@@ -13,8 +13,12 @@ export class UserTodoService {
 
   constructor(private readonly http: HttpClient) { }
 
-  public getAll(): Observable<User[]> {
+  public getAllUser(): Observable<User[]> {
     return this.http.get<User[]>(`api/users`)
     .pipe(retry(3))
   }
+
+  public getUserById(id: string): Observable<User> {
+    return this.http.get<User>(`api/users/${id}`)
+  } 
 }

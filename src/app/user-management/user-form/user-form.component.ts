@@ -15,9 +15,9 @@ import { UserTodoService } from '../services/user-todo.service';
 })
 export class UserFormComponent implements OnInit {
 
-  private readonly activatedRoute: ActivatedRoute,
-    private readonly userService: UserTodoService,
-    private readonly router: Router
+  private readonly activatedRoute!: ActivatedRoute;
+    private readonly userService!: UserTodoService;
+    private readonly router!: Router;
 
   constructor(private readonly http: HttpClient) { }
 
