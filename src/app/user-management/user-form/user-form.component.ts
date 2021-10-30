@@ -1,6 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-// import { FormControl, FormGroup, Validators } from '@angular/forms';
-// import { AlertMessage } from '../models/alert-message-interface';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { retry } from 'rxjs/operators';
+import { AlertMessage } from '../models/alert-message-interface';
+import { UserTodoService } from '../services/user-todo.service';
 
 
 @Component({
@@ -10,21 +15,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserFormComponent implements OnInit {
 
-  constructor() { }
+  private readonly activatedRoute: ActivatedRoute,
+    private readonly userService: UserTodoService,
+    private readonly router: Router
 
-  // user?: User;
-  // message?: AlertMessage;
+  constructor(private readonly http: HttpClient) { }
 
-  // userForm: FormGroup = new FormGroup({
-  //   id: new FormControl(),
-  //   username: new FormControl(null, [Validators.required, Validators.minLength(5)]),
-  //   password: new FormControl(null, [Validators.required, Validators.minLength(5)]),
-  //   fullName: new FormControl(null, [Validators.required, Validators.minLength(5)]),
-  //   email: new FormControl(null, [Validators.required, Validators.email]),
-  //   phone: new FormControl(null, [Validators.required, Validators.minLength(11)])
-  // })
+  user?: User;
+  message?: AlertMessage;
+
+  userForm: FormGroup = new FormGroup({
+    id: new FormControl(),
+    username: new FormControl(null, [Validators.required, Validators.minLength(5)]),
+    password: new FormControl(null, [Validators.required, Validators.minLength(5)]),
+    fullName: new FormControl(null, [Validators.required, Validators.minLength(5)]),
+    email: new FormControl(null, [Validators.required, Validators.email]),
+    phone: new FormControl(null, [Validators.required, Validators.minLength(11)])
+  })
 
   ngOnInit(): void {
+  }
+
+  public getUserById(id:string): Observable<User> {
+    return this.http.get<User>(`api/users/${id}`)
+    .pipe(retry(3))
   }
 
 }
