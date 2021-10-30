@@ -17,7 +17,13 @@ export class UserListComponent implements OnInit {
   constructor(private readonly userService: UserTodoService) { }
 
   ngOnInit(): void {
-    
+    this.getAll();
+    this.userService.listUpdatedUser()
+    .subscribe((updated: boolean) => {
+      if(updated){
+        this.getAll()
+      }
+    })
   }
 
   getAll():void{
