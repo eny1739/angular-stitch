@@ -37,4 +37,8 @@ export class UserTodoService {
     return this.http.delete<void> (`api/users/${id}`)
     .pipe(retry(3))
   }
+
+  listUpdatedUser(): Observable<boolean> {
+    return this.userSubject.asObservable();
+  }
 }
