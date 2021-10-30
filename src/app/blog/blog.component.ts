@@ -34,6 +34,21 @@ export class BlogComponent implements OnInit {
     }, () => {}
     )
   }
+
+  onDelete(id: string):void{
+    this.blogService.delete(id)
+      .pipe(
+        switchMap(() => this.blogService.getAll())
+      )
+      .subscribe((blogs: any) => {
+        console.log('user deleted');
+        this.blogs = blogs;
+      }, (error) => {
+        console.error(error);
+        
+      }, () => {}
+      )
+  }
   
 
 }

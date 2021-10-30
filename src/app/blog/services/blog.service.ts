@@ -21,5 +21,8 @@ export class BlogService {
     return this.http.get<Blog[]>("api/pages/group3/blogs")
   }
 
+  public delete(id: string): Observable<void>{
+    return this.http.delete<void>(`/api/blogs/${id}`);
+  }
 
 }

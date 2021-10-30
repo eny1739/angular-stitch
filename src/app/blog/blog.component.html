@@ -36,6 +36,7 @@
                 {{ blog.content }}
               </p>
               <div class="d-flex justify-content-between align-items-center">
+                <small class="text-muted">{{ blog.author }}</small>
                 <div class="btn-group">
                   <button
                     type="button"
@@ -52,6 +53,7 @@
                   >
                     Edit
                   </button>
+
                   <div
                     class="modal fade"
                     id="exampleModal"
@@ -122,6 +124,13 @@
                             data-bs-dismiss="modal"
                           >
                             Close
+                          </button>
+                          <button
+                            type="button"
+                            class="btn btn-danger"
+                            (click)="onDelete(blog.id!)"
+                          >
+                            Delete
                           </button>
                           <button type="button" class="btn btn-primary">
                             Submit
