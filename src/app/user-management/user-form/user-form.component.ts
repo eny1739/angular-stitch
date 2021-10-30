@@ -68,7 +68,7 @@ export class UserFormComponent implements OnInit {
     this.userForm.get('phone')?.setValue(user.phone);
   }
 
-  onSubmitTodo(): void {
+  onSubmitUser(): void {
     const user: User = this.userForm.value;
 
     console.log('user form value:', user, this);
