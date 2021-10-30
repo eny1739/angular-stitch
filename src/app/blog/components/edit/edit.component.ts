@@ -3,15 +3,15 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { ActivatedRoute, Router } from '@angular/router';
 import { EMPTY } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
-import { Blog } from './model/blog';
-import { BlogService } from './services/blog.service';
+import { Blog } from '../../model/blog';
+import { BlogService } from '../../services/blog.service';
 
 @Component({
-  selector: 'app-blog',
-  templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.scss']
+  selector: 'app-edit',
+  templateUrl: './edit.component.html',
+  styleUrls: ['./edit.component.scss']
 })
-export class BlogComponent implements OnInit {
+export class EditComponent implements OnInit {
 
   blogs: Blog[] = [];
   isEditing: boolean = false;
@@ -132,7 +132,6 @@ export class BlogComponent implements OnInit {
   isLoggedIn(): boolean {
     return (sessionStorage.getItem('token') !== null)
   }
-
   
   sliceContent(content: string, maxLength: number = 50): string {
     return content.slice(0, maxLength) + (content.length > maxLength ? "..." : "");
@@ -161,4 +160,9 @@ export class BlogComponent implements OnInit {
     } 
     return classes;
   }
+
+  navigateToBlog():void {
+    this.router.navigateByUrl('/blog');
+  }
+
 }

@@ -1,1 +1,60 @@
-<p>donate-form works!</p>
+<div
+  class="modal fade"
+  id="donateModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Donation Form</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+
+        <form action="" [formGroup]="donationForm" (ngSubmit)="onSubmitDonations()">
+          <div class="form-floating mb-3 has-validation">
+            <input id="floatDonor" type="text" class="form-control" formControlName="donor" [ngClass]="isFieldValid('donor')" placeholder="Nama Donatur">
+            <label for="floatDonor">Nama Donatur</label>
+          </div>
+
+
+          <div class="form-floating mb-3 has-validation">
+            <input id="floatAmount" type="number" class="form-control" formControlName="amount" [ngClass]="isFieldValid('amount')" placeholder="Jumlah Donasi">
+            <label for="floatAmount">Jumlah Donasi</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input id="floatMessage" type="text" class="form-control" formControlName="message"  placeholder="Pesan">
+            <label for="floatMessage">Pesan</label>
+          </div>
+
+          <h1 class="fs-5">Pembayaran</h1>
+
+          <div class="card">
+            <h1 class="fs-6 m-2" >Metode Pembayaran</h1>
+            <div class="form-check has-validation mx-2">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1">
+                <i class="fas fa-coins"></i> APA
+              </label>
+            </div>
+            <div class="form-check has-validation mx-2">
+              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+              <label class="form-check-label" for="flexRadioDefault2">
+                <i class="fas fa-money-bill"></i> DONO
+              </label>
+            </div>
+          </div>
+            <button type="submit" class="btn btn-primary mt-2 float-end">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
