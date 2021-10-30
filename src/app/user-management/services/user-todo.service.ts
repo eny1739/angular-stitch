@@ -14,7 +14,7 @@ export class UserTodoService {
   constructor(private readonly http: HttpClient) { }
 
   public getAll(): Observable<User[]> {
-    return this.http.get<User[]>()
+    return this.http.get<User[]>(`api/users`)
     .pipe(retry(3))
   }
 }
