@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observer } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { delay, switchMap } from 'rxjs/operators';
 import { User } from '../models/user-management.interface';
 import { UserTodoService } from '../services/user-todo.service';
 
@@ -12,7 +12,8 @@ import { UserTodoService } from '../services/user-todo.service';
 export class UserListComponent implements OnInit {
 
   users: User[] =[]
-  subcriber!: Observer<any> 
+  loading: boolean = false
+  subcriber?: Observer<any> 
 
   constructor(private readonly userService: UserTodoService) { }
 
@@ -32,10 +33,41 @@ export class UserListComponent implements OnInit {
         this.users = users
       },
       error: console.error,
+      complete: () => {this.loading = false}      
     };
+    this.loading = true
     this.userService.getAllUser()
     .pipe(delay(500))
     .subscribe(this.subcriber)
   }
 
+  onCheckTodo(user: User):void{
+    this.subcriber = {
+      next: (user: User) => {
+        console.log('user update');
+      },
+      error: console.error,
+      complete: () => {this.loading=false}
+    };
+    this.loading = true;
+    this.userService.saveUser(user)
+    .pipe(delay(500))
+    .subscribe(this.subcriber)
+  }
+
+  onDeleteTodo(id: string): void{
+    this.subcriber = {
+      next: (users: User[]) => {
+        console.log('user deleted');
+        this.users = users
+      },
+      error: console.error,
+      complete: () => {this.loading=false}
+    }
+    this.loading = true
+    this.userService.deleteUser(id)
+    .pipe(delay(500),
+    switchMap(() => this.userService.getAllUser())
+    ).subscribe(this.subcriber)
+  }
 }
