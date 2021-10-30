@@ -25,4 +25,18 @@ export class BlogService {
     return this.http.delete<void>(`/api/blogs/${id}`);
   }
 
+  public save(blog: Blog): Observable<void> {
+    if (blog.id) {
+      return this.http.put<Blog>(`/api/blogs`, blog)
+      .pipe(
+        map(()=> this.blogSubject.next(true))
+      )
+      }else{
+        return this.http.post<Blog>(`/api/blogs`, blog)
+        .pipe(
+          map(()=> this.blogSubject.next(true))
+      )
+    }
+  }
+
 }

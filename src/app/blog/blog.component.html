@@ -8,6 +8,123 @@
           Facere sit libero quaerat, sed tenetur praesentium. Adipisci,
           doloremque minima.
         </p>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#submitModal"
+          data-bs-whatever="@getbootstrap"
+          *ngIf="isLoggedIn()"
+        >
+          Create Blog
+        </button>
+        <div
+          class="modal fade"
+          id="submitModal"
+          tabindex="-1"
+          aria-labelledby="submitModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="submitModalLabel">Create Blog</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <form [formGroup]="blogForm" (ngSubmit)="onSubmit()">
+                  <div class="row mb-3">
+                    <div class="col">
+                      <div class="input-group mb-3 has-validation">
+                        <input
+                          type="text"
+                          class="form-control"
+                          [ngClass]="isFieldValid('title')"
+                          placeholder="Title"
+                          formControlName="title"
+                        />
+                        <div
+                          class="invalid-feedback"
+                          validation-message
+                          [control]="blogForm.controls['title']"
+                          [fieldLabel]="'title'"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col">
+                      <div class="input-group mb-3 has-validation">
+                        <input
+                          type="text"
+                          class="form-control"
+                          [ngClass]="isFieldValid('author')"
+                          placeholder="Author"
+                          formControlName="author"
+                        />
+                        <div
+                          class="invalid-feedback"
+                          validation-message
+                          [control]="blogForm.controls['author']"
+                          [fieldLabel]="'author'"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col">
+                      <div class="input-group mb-3 has-validation">
+                        <textarea
+                          name=""
+                          id=""
+                          cols="30"
+                          rows="10"
+                          type="text"
+                          class="form-control"
+                          [ngClass]="isFieldValid('content')"
+                          placeholder="Content"
+                          formControlName="content"
+                        ></textarea>
+                        <div
+                          class="invalid-feedback"
+                          validation-message
+                          [control]="blogForm.controls['content']"
+                          [fieldLabel]="'content'"
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <button
+                        type="reset"
+                        class="btn btn-secondary mx-2"
+                        data-bs-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                    </div>
+                    <div class="col">
+                      <button
+                        type="submit"
+                        class="btn btn-primary mx-2"
+                        [disabled]="blogForm.invalid"
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -16,24 +133,11 @@
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col" *ngFor="let blog of blogs">
-          <div class="card shadow-sm">
-            <svg
-              class="bd-placeholder-img card-img-top"
-              width="100%"
-              height="225"
-              xmlns="http://www.w3.org/2000/svg"
-              role="img"
-              aria-label="Placeholder: Thumbnail"
-              preserveAspectRatio="xMidYMid slice"
-              focusable="false"
-            >
-              <title>{{ blog.title }}</title>
-              <rect width="100%" height="100%" fill="#55595c"></rect>
-            </svg>
-
+          <div class="card">
+            <h5 class="card-header">{{ blog.title }}</h5>
             <div class="card-body">
               <p class="card-text">
-                {{ blog.content }}
+                {{ sliceContent(blog.content) }}
               </p>
               <div class="d-flex justify-content-between align-items-center">
                 <small class="text-muted">{{ blog.author }}</small>
@@ -48,23 +152,24 @@
                     type="button"
                     class="btn btn-sm btn-outline-secondary"
                     data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
+                    data-bs-target="#editModal"
                     data-bs-whatever="@getbootstrap"
+                    *ngIf="isLoggedIn()"
                   >
                     Edit
                   </button>
 
                   <div
                     class="modal fade"
-                    id="exampleModal"
+                    id="editModal"
                     tabindex="-1"
-                    aria-labelledby="exampleModalLabel"
+                    aria-labelledby="editModalLabel"
                     aria-hidden="true"
                   >
                     <div class="modal-dialog">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLabel">
+                          <h5 class="modal-title" id="editModalLabel">
                             Edit Blog
                           </h5>
                           <button
@@ -75,67 +180,91 @@
                           ></button>
                         </div>
                         <div class="modal-body">
-                          <form>
-                            <div class="mb-3">
-                              <label for="title" class="col-form-label"
-                                >Title</label
-                              >
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="title"
-                              />
+                          <form [formGroup]="blogForm" (ngSubmit)="onSubmit()">
+                            <div class="row mb-3">
+                              <div class="col">
+                                <div class="input-group mb-3 has-validation">
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    [ngClass]="isFieldValid('title')"
+                                    placeholder="Title"
+                                    formControlName="title"
+                                  />
+                                  <div
+                                    class="invalid-feedback"
+                                    validation-message
+                                    [control]="blogForm.controls['title']"
+                                    [fieldLabel]="'title'"
+                                  ></div>
+                                </div>
+                              </div>
                             </div>
-                            <div class="mb-3">
-                              <label for="content" class="col-form-label"
-                                >Content</label
-                              >
-                              <textarea
-                                class="form-control"
-                                id="content"
-                              ></textarea>
+                            <div class="row mb-3">
+                              <div class="col">
+                                <div class="input-group mb-3 has-validation">
+                                  <input
+                                    type="text"
+                                    class="form-control"
+                                    [ngClass]="isFieldValid('author')"
+                                    placeholder="Author"
+                                    formControlName="author"
+                                  />
+                                  <div
+                                    class="invalid-feedback"
+                                    validation-message
+                                    [control]="blogForm.controls['author']"
+                                    [fieldLabel]="'author'"
+                                  ></div>
+                                </div>
+                              </div>
                             </div>
-                            <div class="mb-3">
-                              <label for="author" class="col-form-label"
-                                >Author</label
-                              >
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="author"
-                              />
+                            <div class="row mb-3">
+                              <div class="col">
+                                <div class="input-group mb-3 has-validation">
+                                  <textarea
+                                    name=""
+                                    id=""
+                                    cols="30"
+                                    rows="10"
+                                    type="text"
+                                    class="form-control"
+                                    [ngClass]="isFieldValid('content')"
+                                    placeholder="Content"
+                                    formControlName="content"
+                                  ></textarea>
+                                  <div
+                                    class="invalid-feedback"
+                                    validation-message
+                                    [control]="blogForm.controls['content']"
+                                    [fieldLabel]="'content'"
+                                  ></div>
+                                </div>
+                              </div>
                             </div>
-                            <div class="mb-3">
-                              <label for="url" class="col-form-label"
-                                >Url</label
-                              >
-                              <input
-                                type="text"
-                                class="form-control"
-                                id="url"
-                              />
+                            <div class="row">
+                              <div class="col">
+                                <button
+                                  type="reset"
+                                  class="btn btn-secondary mx-2"
+                                  data-bs-dismiss="modal"
+                                >
+                                  Close
+                                </button>
+                              </div>
+                              <div class="col">
+                                <button
+                                  type="submit"
+                                  class="btn btn-primary mx-2"
+                                  [disabled]="blogForm.invalid"
+                                >
+                                  Submit
+                                </button>
+                              </div>
                             </div>
                           </form>
                         </div>
-                        <div class="modal-footer">
-                          <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                          >
-                            Close
-                          </button>
-                          <button
-                            type="button"
-                            class="btn btn-danger"
-                            (click)="onDelete(blog.id!)"
-                          >
-                            Delete
-                          </button>
-                          <button type="button" class="btn btn-primary">
-                            Submit
-                          </button>
-                        </div>
+                        <div class="modal-footer"></div>
                       </div>
                     </div>
                   </div>
