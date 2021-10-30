@@ -14,7 +14,6 @@ import { UserTodoService } from '../services/user-todo.service';
   styleUrls: ['./user-form.component.scss']
 })
 export class UserFormComponent implements OnInit {
-  id: string;
 
   
   constructor(
@@ -47,10 +46,25 @@ export class UserFormComponent implements OnInit {
       delay(500),
       switchMap((id: string) => {
         if(!id) return EMPTY;
-        else return this.id=id, this.userService.getUserById(id)
+        else return this.userService.getUserById(id)
       })
+    )
+    .subscribe(
+      (user: User) => {
+        if(user){
+          this.setFormValues(user)
+        }
+      },
+      console.error
     )
   }
  
+  setFormValues(user: User): void {
+    this.userForm.get('username')?.setValue(user.username);
+    this.userForm.get('password')?.setValue(user.password);
+    this.userForm.get('fullName')?.setValue(user.fullName);
+    this.userForm.get('email')?.setValue(user.email);
+    this.userForm.get('phone')?.setValue(user.phone);
+  }
 
 }
