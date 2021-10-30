@@ -32,4 +32,9 @@ export class UserTodoService {
       .pipe(retry(3))
     }
   }
+
+  public deleteUser(id: string): Observable<void> {
+    return this.http.delete<void> (`api/users/${id}`)
+    .pipe(retry(3))
+  }
 }
