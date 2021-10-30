@@ -30,6 +30,7 @@ export class BlogComponent implements OnInit {
         }
       })
       this.activatedRoute.params.pipe().subscribe({ next:()=> this.getForm()})
+      
     }
   }
 
@@ -53,7 +54,7 @@ export class BlogComponent implements OnInit {
   blogForm: FormGroup = new FormGroup({
     title: new FormControl(null, [Validators.required]),
     content: new FormControl(null, [Validators.required]),
-    author: new FormControl(null, [Validators.required]),
+    // author: new FormControl(null, [Validators.required]),
     url: new FormControl(" "),
   })
 
@@ -117,6 +118,7 @@ export class BlogComponent implements OnInit {
   onSubmit(): void{
     const blog = this.blogForm.value;
     blog.url = this.titleToSlug(blog.title);
+    blog.author = sessionStorage.getItem('username');
     this.blogService.save(blog).pipe(
       switchMap(()=> this.blogService.getAll())
     ).subscribe({

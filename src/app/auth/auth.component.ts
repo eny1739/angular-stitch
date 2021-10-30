@@ -29,6 +29,7 @@ export class AuthComponent implements OnInit {
     .subscribe((action)=>{
       if(action === 'logout'){
         sessionStorage.removeItem('token')
+        sessionStorage.removeItem('username')
         this.router.navigateByUrl('/auth/login')
       } else if (sessionStorage.getItem('token') && action === 'login'){
         this.router.navigateByUrl('/')
@@ -38,6 +39,7 @@ export class AuthComponent implements OnInit {
 
   onFormSubmit():void{
     console.log('login value:', this.loginForm.value);
+    sessionStorage.setItem('username', this.loginForm.value.username);
     if(this.loginForm.valid){
       this.authService
       .login(this.loginForm.value)

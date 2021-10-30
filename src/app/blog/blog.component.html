@@ -60,25 +60,6 @@
                   <div class="row mb-3">
                     <div class="col">
                       <div class="input-group mb-3 has-validation">
-                        <input
-                          type="text"
-                          class="form-control"
-                          [ngClass]="isFieldValid('author')"
-                          placeholder="Author"
-                          formControlName="author"
-                        />
-                        <div
-                          class="invalid-feedback"
-                          validation-message
-                          [control]="blogForm.controls['author']"
-                          [fieldLabel]="'author'"
-                        ></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row mb-3">
-                    <div class="col">
-                      <div class="input-group mb-3 has-validation">
                         <textarea
                           name=""
                           id=""
@@ -165,6 +146,7 @@
                     class="btn btn-outline-secondary"
                     title="Delete"
                     (click)="onDelete(blog.id!)"
+                    *ngIf="isLoggedIn()"
                   >
                     <i class="fas fa-trash"></i>
                   </button>
