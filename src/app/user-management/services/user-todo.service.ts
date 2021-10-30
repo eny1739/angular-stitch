@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { retry } from 'rxjs/operators';
+import { User } from '../models/user-management.interface';
 
 @Injectable({
   providedIn: 'root'

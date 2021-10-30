@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EMPTY, Observable } from 'rxjs';
 import { delay, map, retry, switchMap } from 'rxjs/operators';
 import { AlertMessage } from '../models/alert-message-interface';
+import { User } from '../models/user-management.interface';
 import { UserTodoService } from '../services/user-todo.service';
 
 
@@ -66,5 +67,18 @@ export class UserFormComponent implements OnInit {
     this.userForm.get('email')?.setValue(user.email);
     this.userForm.get('phone')?.setValue(user.phone);
   }
+
+  onSubmitTodo(): void {
+    const user: User = this.userForm.value;
+
+    console.log('user form value:', user, this);
+
+    this.userService.saveUser(user)
+    .subscribe(() => {
+      this.router.navigateByUrl('/user-mangement')
+    })
+    
+  }
+  
 
 }
