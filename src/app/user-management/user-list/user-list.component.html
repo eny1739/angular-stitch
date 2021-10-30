@@ -1,3 +1,5 @@
+<div class="row mt-5">
+
 <table class="table">
     <thead>
       <tr>
@@ -10,19 +12,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr >
-        <td>1</td>
-        <td>Brandsma</td>
-        <td>fsdlfdsdf</td>
-        <td>Brandsma Siringoringo</td>
-        <td>brandsma@gmail.com</td>
-        <td>434645654655</td>
+      <tr *ngFor = "let element of users">
+        <td>{{element.id}}</td>
+        <td>{{element.username}}</td>
+        <td>{{element.password}}</td>
+        <td>{{element.fullName}}</td>
+        <td>{{element.email}}</td>
+        <td>{{element.phone}}</td>
         <td>
-            <button class="btn btn-primary" >in</button>
-            <button class="btn btn-secondary" >out</button>
-            <button class="btn btn-warning" >edit</button>
-            <button class="btn btn-danger" >delete</button>
+      
+            <button class="btn btn-warning" (click)="onCheckTodo(element)">edit</button>
+            <button class="btn btn-danger" (click)="onDeleteTodo(element.id!)" >delete</button>
         </td>
       </tr>
     </tbody>
   </table>
+
+</div>

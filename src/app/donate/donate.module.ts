@@ -23,6 +23,11 @@ import { DonateService } from './service/donate.service';
     ReactiveFormsModule,
     SharedModule
   ],
+  exports: [
+    DonateComponent,
+    DonateListComponent,
+    DonateFormComponent
+  ],
   providers:[
     DonateService
   ]

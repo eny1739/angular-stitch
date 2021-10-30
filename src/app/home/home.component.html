@@ -1,1 +1,193 @@
-<router-outlet></router-outlet>
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button
+      type="button"
+      data-bs-target="#myCarousel"
+      data-bs-slide-to="0"
+      class="active"
+      aria-label="Slide 1"
+      aria-current="true"
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#myCarousel"
+      data-bs-slide-to="1"
+      aria-label="Slide 2"
+      class=""
+    ></button>
+    <button
+      type="button"
+      data-bs-target="#myCarousel"
+      data-bs-slide-to="2"
+      aria-label="Slide 3"
+      class=""
+    ></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <svg
+        class="bd-placeholder-img"
+        width="100%"
+        height="550px"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        preserveAspectRatio="xMidYMid slice"
+        focusable="false"
+      >
+        <rect width="100%" height="100%" fill="#777"></rect>
+      </svg>
+
+      <div class="container">
+        <div class="carousel-caption text-start">
+          <h1>Example headline.</h1>
+          <p>
+            Some representative placeholder content for the first slide of the
+            carousel.
+          </p>
+          <button type="button" class="btn btn-outline-primary mb-3 donate" data-bs-toggle="modal" data-bs-target="#donateModal" (click)="show = true">Donate Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <svg
+        class="bd-placeholder-img"
+        width="100%"
+        height="550px"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        preserveAspectRatio="xMidYMid slice"
+        focusable="false"
+      >
+        <rect width="100%" height="100%" fill="#777"></rect>
+      </svg>
+
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Another example headline.</h1>
+          <p>
+            Some representative placeholder content for the second slide of the
+            carousel.
+          </p>
+          <button type="button" class="btn btn-outline-primary mb-3 donate" data-bs-toggle="modal" data-bs-target="#donateModal" (click)="show = true">Donate Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <svg
+        class="bd-placeholder-img"
+        width="100%"
+        height="550px"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        preserveAspectRatio="xMidYMid slice"
+        focusable="false"
+      >
+        <rect width="100%" height="100%" fill="#777"></rect>
+      </svg>
+
+      <div class="container">
+        <div class="carousel-caption text-end">
+          <h1>One more for good measure.</h1>
+          <p>
+            Some representative placeholder content for the third slide of this
+            carousel.
+          </p>
+          <button type="button" class="btn btn-outline-primary mb-3 donate" data-bs-toggle="modal" data-bs-target="#donateModal" (click)="show = true">Donate Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#myCarousel"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#myCarousel"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="container marketing mt-3">
+  <!-- Three columns of text below the carousel -->
+  <div class="row justify-content-evenly">
+    <div class="col-md-4 text-center">
+      <img
+        src="https://i.imgur.com/eCijVBe.png"
+        alt=""
+        class="bd-placeholder-img rounded-circle"
+        width="140"
+        height="140"
+      />
+      <h2>Brandsma Siringoringo</h2>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint natus,
+        neque commodi minus aliquid alias.
+      </p>
+      <p>
+        <a class="btn btn-secondary" routerLink="/resume/brandsma"
+          >View details »</a
+        >
+      </p>
+    </div>
+    <!-- /.col-md-4 -->
+    <div class="col-md-4 text-center">
+      <img
+        src="../../assets/image/eny_pp.png"
+        alt=""
+        class="bd-placeholder-img rounded-circle"
+        width="140"
+        height="140"
+      />
+
+      <h2>Eny Sulistyowati</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime qui
+        perferendis ex maiores odio sequi?
+      </p>
+      <p>
+        <a class="btn btn-secondary" routerLink="/resume/eny">View details »</a>
+      </p>
+    </div>
+    <!-- /.col-md-4 -->
+    <div class="col-md-4 text-center">
+      <img
+        src="../../assets/image/tokyo-money-heist-wallpapers.jpg"
+        alt=""
+        class="bd-placeholder-img rounded-circle"
+        width="140"
+        height="140"
+      />
+
+      <h2>Kenji Ferdian Santosa</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+        commodi delectus atque. Alias, repudiandae eligendi.
+      </p>
+      <p>
+        <a class="btn btn-secondary" routerLink="/resume/kenji"
+          >View details »</a
+        >
+      </p>
+    </div>
+    <!-- /.col-md-4 -->
+  </div>
+  <!-- /.row -->
+</div>
+<ng-container *ngIf="show == true; else elseTemplate">
+  <app-donate-form></app-donate-form>
+</ng-container>
+<ng-template #elseTemplate>
+  
+</ng-template>
+
+

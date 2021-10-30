@@ -21,5 +21,30 @@ export class BlogService {
     return this.http.get<Blog[]>("api/pages/group3/blogs")
   }
 
+  public getByUrl(url: string): Observable<Blog>{
+    return this.http.get<Blog>(`api/pages/group3/blogs/read/${url}`)
+  }
+
+  public getById(id: string): Observable<Blog>{
+    return this.http.get<Blog>(`api/blogs/${id}`)
+  }
+
+  public delete(id: string): Observable<void>{
+    return this.http.delete<void>(`/api/blogs/${id}`);
+  }
+
+  public save(blog: Blog): Observable<void> {
+    if (blog.id) {
+      return this.http.put<Blog>(`/api/blogs`, blog)
+      .pipe(
+        map(()=> this.blogSubject.next(true))
+      )
+      }else{
+        return this.http.post<Blog>(`/api/blogs`, blog)
+        .pipe(
+          map(()=> this.blogSubject.next(true))
+      )
+    }
+  }
 
 }

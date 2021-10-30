@@ -1,0 +1,91 @@
+<div class="container my-3 mb-3">
+  <div class="row">
+    <div class="card bg-app">
+      <div class="card-header">Edit Blog</div>
+      <div class="card-body">
+        <form [formGroup]="blogForm" (ngSubmit)="onSubmit()">
+          <div class="row mb-3">
+            <div class="col">
+              <div class="input-group mb-3 has-validation">
+                <input
+                  type="text"
+                  class="form-control"
+                  [ngClass]="isFieldValid('title')"
+                  placeholder="Title"
+                  formControlName="title"
+                />
+                <div
+                  class="invalid-feedback"
+                  validation-message
+                  [control]="blogForm.controls['title']"
+                  [fieldLabel]="'title'"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <div class="input-group mb-3 has-validation">
+                <input
+                  type="text"
+                  class="form-control"
+                  [ngClass]="isFieldValid('author')"
+                  placeholder="Author"
+                  formControlName="author"
+                />
+                <div
+                  class="invalid-feedback"
+                  validation-message
+                  [control]="blogForm.controls['author']"
+                  [fieldLabel]="'author'"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col">
+              <div class="input-group mb-3 has-validation">
+                <textarea
+                  name=""
+                  id=""
+                  cols="30"
+                  rows="10"
+                  type="text"
+                  class="form-control"
+                  [ngClass]="isFieldValid('content')"
+                  placeholder="Content"
+                  formControlName="content"
+                ></textarea>
+                <div
+                  class="invalid-feedback"
+                  validation-message
+                  [control]="blogForm.controls['content']"
+                  [fieldLabel]="'content'"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 text-center">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="blogForm.invalid"
+              >
+                Submit
+              </button>
+              <button
+                type="reset"
+                class="btn btn-outline-secondary mx-1"
+                title="Cancel"
+                (click)="navigateToBlog()"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
