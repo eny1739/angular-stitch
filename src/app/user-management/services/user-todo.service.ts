@@ -20,5 +20,16 @@ export class UserTodoService {
 
   public getUserById(id: string): Observable<User> {
     return this.http.get<User>(`api/users/${id}`)
-  } 
+  }
+  
+  public saveUser(user: User): Observable<User> {
+    if(!user.id) {
+      return this.http.post<any>(`api/users`, user)
+      .pipe(retry(3))
+    } else {
+      console.log(user);
+      return this.http.put<User>(`api/users`, user)
+      .pipe(retry(3))
+    }
+  }
 }
