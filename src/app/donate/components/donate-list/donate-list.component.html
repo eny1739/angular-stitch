@@ -1,0 +1,20 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th>Nama</th>
+                <th>Jumlah</th>
+                <th>Tanggal Donasi</th>
+            </tr>
+          </thead>
+          <tbody>
+              <ng-container *ngFor="let donation of donations">
+                <tr>
+                    <td>{{donation.donor}}</td>
+                    <td>{{donation.amount}}</td>
+                    <td>{{donation.message}}</td>
+                </tr> 
+              </ng-container>
+          </tbody>
+    </table>
+</div>
