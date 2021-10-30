@@ -11,6 +11,7 @@ import { DonateService } from '../../service/donate.service';
 export class DonateListComponent implements OnInit {
 
   donations:Donation[] = [];
+  currentDate:Date = new Date()
   loading:boolean = false;
   subscriber!:Observer<any>
 

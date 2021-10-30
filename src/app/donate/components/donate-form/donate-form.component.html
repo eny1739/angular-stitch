@@ -1,1 +1,45 @@
-<p>donate-form works!</p>
+<div
+  class="modal fade"
+  id="donateModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Donation Form</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+
+        <form action="" [formGroup]="donationForm" (ngSubmit)="onSubmitDonations()">
+          <div class="form-floating mb-3 has-validation">
+            <input id="floatDonor" type="text" class="form-control" formControlName="donor" [ngClass]="isFieldValid('donor')" placeholder="Nama Donatur">
+            <label for="floatDonor">Nama Donatur</label>
+          </div>
+
+
+          <div class="form-floating mb-3 has-validation">
+            <input id="floatDonor" type="number" class="form-control" formControlName="amount" [ngClass]="isFieldValid('amount')" placeholder="Jumlah Donasi">
+            <label for="floatDonor">Jumlah Donasi</label>
+          </div>
+
+          <div class="form-floating mb-3 has-validation">
+            <input id="floatDonor" type="text" class="form-control" formControlName="message" [ngClass]="isFieldValid('message')" placeholder="Pesan">
+            <label for="floatDonor">Pesan</label>
+          </div>
+
+          <!-- <div class="modal-footer"> -->
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          <!-- </div> -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
