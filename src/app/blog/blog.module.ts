@@ -5,11 +5,15 @@ import { BlogRoutingModule } from './blog-routing.module';
 import { BlogComponent } from './blog.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ViewMoreComponent } from './components/view-more/view-more.component';
+import { EditComponent } from './components/edit/edit.component';
 
 
 @NgModule({
   declarations: [
-    BlogComponent
+    BlogComponent,
+    ViewMoreComponent,
+    EditComponent
   ],
   imports: [
     CommonModule,
