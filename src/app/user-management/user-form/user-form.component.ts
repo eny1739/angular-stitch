@@ -16,7 +16,7 @@ import { UserTodoService } from '../services/user-todo.service';
 })
 export class UserFormComponent implements OnInit {
 
-  
+
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly userService: UserTodoService,
@@ -40,26 +40,26 @@ export class UserFormComponent implements OnInit {
     this.getUserForm();
   }
 
-  getUserForm(){
+  getUserForm() {
     this.activatedRoute.params
-    .pipe(
-      map((params) => params.id),
-      delay(500),
-      switchMap((id: string) => {
-        if(!id) return EMPTY;
-        else return this.userService.getUserById(id)
-      })
-    )
-    .subscribe(
-      (user: User) => {
-        if(user){
-          this.setFormValues(user)
-        }
-      },
-      console.error
-    )
+      .pipe(
+        map((params) => params.id),
+        delay(500),
+        switchMap((id: string) => {
+          if (!id) return EMPTY;
+          else return this.userService.getUserById(id)
+        })
+      )
+      .subscribe(
+        (user: User) => {
+          if (user) {
+            this.setFormValues(user)
+          }
+        },
+        console.error
+      )
   }
- 
+
   setFormValues(user: User): void {
     this.userForm.get('username')?.setValue(user.username);
     this.userForm.get('password')?.setValue(user.password);
@@ -74,14 +74,61 @@ export class UserFormComponent implements OnInit {
     console.log('user form value:', user, this);
 
     this.userService.saveUser(user)
-    .subscribe(() => {
-      this.router.navigateByUrl('/user-mangement')
-    }, console.error)
+      .subscribe(() => {
+        this.router.navigateByUrl('/user-mangement')
+      }, console.error)
     this.onReset()
   }
-  
+
   onReset(): void {
     this.userForm.reset()
     this.userForm.get('isDone')?.setValue(false)
+  }
+
+  isFieldValid(fieldName: string, parent?: AbstractControl) {
+    let control: AbstractControl = this.userForm.get(fieldName) as AbstractControl;
+
+    if (parent) {
+      control = parent;
+    }
+
+    const classed = {
+      'is-invalid': false,
+      'is-valid': false
+    }
+
+    if (control && control.touched && control.invalid) {
+      classed['is-invalid'] = true
+    } else if (control && control.valid) {
+      classed['is-valid'] = true
+    }
+    return classed;
+  }
+
+  displayErrors(fieldName: string): string{
+    const control: AbstractControl = this.userForm.get(fieldName) as AbstractControl
+    const messages: any = {
+      "required": 'field harus diisi',
+      "minlength": 'field minimal harus lebih panjang dari {minlength}'
+    }
+
+    if(control && control.errors) {
+      const error = Object.values(control.errors).pop()
+      const key:string = Object.keys(control.errors).pop() as string
+
+      let message = messages [key]
+      console.log(message);
+
+      if(key === 'minlength'){
+        console.log(error);
+        message = messages.replace('(minlength', error.requiredlength)
+        
+      }
+      return message
+    }else{return ''}
+  }
+
+  getCOntrol(name: string): AbstractControl {
+    return this.userForm.get(name) as AbstractControl
   }
 }

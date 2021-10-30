@@ -1,6 +1,30 @@
-<form>
-  <div class="row mt-5">
+<div class="card my-3 p-2 shadow">
 
+  <ng-container *ngIf="message">
+    <div class="alert {{
+    message.status ? 'alert-' + message.status : ''
+  }} fade show" role="alert">
+        {{ message.text }}
+        <button type="button" class="btn-close float-end" data-bs-dismiss="alert" (click)="message = undefined"
+            aria-label="close"></button>
+    </div>
+</ng-container>
+
+<div class="title">
+  <h2>User Form</h2>
+</div>
+
+<div class="col-12 has-validation">
+  <label class="form-label">Fullname</label>
+  <input type="text" class="form-control {{ isFieldValid('fullName')}}" placeholder="Full Name" formControlName="fullName" />
+  <div class="invalid-feedback" validation-message [control]="userForm.controls['fullName']" [label]="'Full name'">
+  </div>
+</div>
+
+
+<div class="body">
+<form [formGroup]="userForm">
+  <div class="row mt-5">
     <div class="col-6">
     <div class="row g-3 align-items-center fw-bolder mb-3">
       <div class="col-3">
@@ -78,5 +102,5 @@
   </div>
 </div>
 </form>
-
-
+</div>
+</div>
