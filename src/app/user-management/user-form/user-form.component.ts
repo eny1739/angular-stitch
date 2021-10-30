@@ -76,9 +76,12 @@ export class UserFormComponent implements OnInit {
     this.userService.saveUser(user)
     .subscribe(() => {
       this.router.navigateByUrl('/user-mangement')
-    })
-    
+    }, console.error)
+    this.onReset()
   }
   
-
+  onReset(): void {
+    this.userForm.reset()
+    this.userForm.get('isDone')?.setValue(false)
+  }
 }
