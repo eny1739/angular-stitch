@@ -1,23 +1,32 @@
-<div class="card my-3 p-2 shadow">
+<div class="col-sm card my-3 p-2 shadow">
 
-  <ng-container *ngIf="message">
-    <div class="alert {{
-    message.status ? 'alert-' + message.status : ''
-  }} fade show" role="alert">
-        {{ message.text }}
-        <button type="button" class="btn-close float-end" data-bs-dismiss="alert" (click)="message = undefined"
-            aria-label="close"></button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog text-center">
+    <div class="modal-content">
+      <div class="modal-header text-primary">
+        <h5 class="modal-title justify-content-center" id="exampleModalLabel" style="color: darkgoldenrod;">Added user</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-bookmark-x-fill"></i></button>
+      </div>
+      <p class="fs-6 fst-italic" style="background: chartreuse;">congratulation you added new user with name: {{ name }}</p>
+      <div class="modal-body">
+        <img src="../../../assets/image/moving-flower.gif" class="rounded mx-auto d-block" alt="picture">
+      </div>
+      <p class="fs-5 fst-italic link-warning">Have a nice day </p>
     </div>
-</ng-container>
-
-<div class="title">
-  <h2>User Form</h2>
+  </div>
 </div>
+
+
+
 <div class="body">
 <form [formGroup]="userForm">
+    <div class="row d-flex justify-content-center">
+      <div class="col-sm-9">
+        <h2 style="color: cornflowerblue; margin-bottom: -90px;">User Form</h2>
+      </div>
+    </div>
   <div class="row mt-5">
-    <div class="col-6">
-
+    <div class="col-sm-6">
     <div class="row g-3 align-items-center fw-bolder mb-3 has-validation">
       <div class="col-3">
         <label class="col-form-label">Username</label>
@@ -69,7 +78,7 @@
     </div>
     
   </div>
-    <div class="col-6">
+    <div class="col-sm-6">
       <div class="row">
         <!-- picture -->
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -98,9 +107,9 @@
   </div>
   
   <div class="row">
-  <div class="col-6 justify-content-center" style="margin-top: -80px; margin-left: 150px;">
-    <button class="btn btn-primary ms-5 " (click)="onSubmitUser()" [disabled]="userForm.invalid"><i class="fas fa-save"></i></button>
-    <button type="reset" class="btn btn-danger ms-3" (click)="onReset" [disabled]="userForm.invalid"><i class="fas fa-trash"></i></button>
+  <div class="col-sm-6 justify-content-center" style="margin-top: -80px; margin-left: 150px;">
+    <button class="btn btn-primary ms-5 " (click)="onSubmitUser()" [disabled]="userForm.invalid" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-dismiss="modal"><i class="fas fa-save"></i></button>
+    <button type="reset" class="btn btn-danger ms-3" (click)="onReset()" [disabled]="userForm.invalid"><i class="fas fa-trash"></i></button>
   </div>
   </div>
 </form>
