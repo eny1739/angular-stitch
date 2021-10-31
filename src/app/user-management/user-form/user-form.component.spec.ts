@@ -37,6 +37,10 @@ describe('UserFormComponent', () => {
     expect(component).toBeTruthy();
   })
 
+  it('getuserform can defined', () => {
+    expect(component.getUserForm).toBeDefined();
+  })
+
   it('component user from initial state', () => {
     expect(component.userForm).toBeDefined();
     expect(component.userForm.valid).toBeDefined();
