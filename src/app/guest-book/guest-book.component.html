@@ -95,7 +95,7 @@
               <tr class="align-middle" *ngFor="let guest of guests">
                 <td>{{ guest.id }}</td>
                 <td>{{ guest.name | titlecase }}</td>
-                <td>{{ guest.email }}</td>
+                <td innerHTML="{{ guest.email | email }}"></td>
                 <td>{{ guest.message }}</td>
 
                 <td>

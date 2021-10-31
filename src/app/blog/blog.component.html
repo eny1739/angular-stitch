@@ -40,7 +40,7 @@
                 <form [formGroup]="blogForm" (ngSubmit)="onSubmit()">
                   <div class="row mb-3">
                     <div class="col">
-                      <div class="input-group mb-3 has-validation">
+                      <div class="form-floating mb-3 has-validation">
                         <input
                           type="text"
                           class="form-control"
@@ -48,6 +48,7 @@
                           placeholder="Title"
                           formControlName="title"
                         />
+                        <label for="">Title</label>
                         <div
                           class="invalid-feedback"
                           validation-message
