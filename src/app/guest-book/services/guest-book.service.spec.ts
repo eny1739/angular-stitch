@@ -3,7 +3,6 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { from, Observable } from 'rxjs';
 import { GuestBook } from '../model/guest-book';
 import { GuestBookService } from './guest-book.service';
 

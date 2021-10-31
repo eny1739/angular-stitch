@@ -31,7 +31,7 @@ describe('GuestBook Component', () => {
         expect(component.guests).toEqual([]);
     })
 
-    it('Should showing todos', () => {
+    it('Should showing guest book', () => {
         const guestMock: GuestBook[] = [
             {
                 name:'mock1',
