@@ -1,6 +1,6 @@
 <div class="row mt-5">
 
-<table class="table">
+<table class="table table-responsive">
     <thead>
       <tr>
         <th scope="col">User Id</th>
@@ -20,9 +20,8 @@
         <td>{{element.email}}</td>
         <td>{{element.phone}}</td>
         <td>
-      
-            <button class="btn btn-warning" (click)="onCheckTodo(element)">edit</button>
-            <button class="btn btn-danger" (click)="onDeleteTodo(element.id!)" >delete</button>
+            <span><button class="btn btn-sm btn-warning" (click)="onCheckTodo(element)"><i class="fas fa-edit"></i></button>
+            </span><button class="btn btn-sm btn-danger" (click)="onDeleteTodo(element.id!)" ><i class="fas fa-trash"></i></button>
         </td>
       </tr>
     </tbody>
