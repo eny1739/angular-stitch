@@ -1,6 +1,7 @@
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { RouterTestingModule } from "@angular/router/testing";
+import { Ng2SearchPipeModule } from "ng2-search-filter";
 import { GuestBookComponent } from "./guest-book.component";
 import { GuestBook } from "./model/guest-book";
 import { GuestBookService } from "./services/guest-book.service";
@@ -13,7 +14,7 @@ describe('GuestBook Component', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
           declarations: [ GuestBookComponent ],
-          imports:[HttpClientTestingModule, RouterTestingModule.withRoutes([{path: 'guest-book', component: GuestBookComponent}])],
+          imports:[HttpClientTestingModule, Ng2SearchPipeModule, RouterTestingModule.withRoutes([{path: 'guest-book', component: GuestBookComponent}])],
           providers:[GuestBookService]
         })
         .compileComponents();
@@ -132,3 +133,6 @@ describe('GuestBook Component', () => {
 
 
 })
+
+
+

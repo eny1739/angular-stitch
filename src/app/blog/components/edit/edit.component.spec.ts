@@ -1,11 +1,12 @@
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { RouterTestingModule } from "@angular/router/testing"
+import { Ng2SearchPipeModule } from "ng2-search-filter";
 import { Blog } from "../../model/blog";
 import { BlogService } from "../../services/blog.service";
 import { EditComponent } from "./edit.component";
 
-describe('Edit Component', () => {
+describe('Blog Component', () => {
     let component: EditComponent;
     let blogService: BlogService;
     let fixture: ComponentFixture<EditComponent>;
@@ -14,7 +15,7 @@ describe('Edit Component', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
           declarations: [ EditComponent ],
-          imports:[HttpClientTestingModule, RouterTestingModule.withRoutes([{path: 'blog', component: EditComponent}])],
+          imports:[HttpClientTestingModule,Ng2SearchPipeModule, RouterTestingModule.withRoutes([{path: 'blog', component: EditComponent}])],
           providers:[BlogService]
         })
         .compileComponents();
