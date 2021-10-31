@@ -4,6 +4,7 @@ import { UserTodoService } from '../services/user-todo.service';
 import { UserFormComponent } from './user-form.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing'
 import { AbstractControl, ValidationErrors } from '@angular/forms';
+import { User } from '../models/user-management.interface';
 
 describe('UserFormComponent', () => {
   let component: UserFormComponent;
@@ -54,4 +55,17 @@ describe('UserFormComponent', () => {
     error = name.errors!['minlength'] || {};
     expect(error).toBeTruthy
   })
+
+  it('Check Validity Form Component User', () => {
+    formUser('abc', 'brans', 'pass', 'sringo ringo', 'brans@gmail.com', '02222');
+    const userMock: User = {
+      id: 'abc',
+      username: 'brans',
+      password: 'pass',
+      fullName: 'sringo ringo',
+      email: 'brans@gmail.com',
+      phone: '02222'
+    };
+    expect(component.userForm.value).toEqual(userMock);
+  });
 });
