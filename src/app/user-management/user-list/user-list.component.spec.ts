@@ -69,4 +69,8 @@ describe('UserListComponent', () => {
   it('should onSelectUser is defined', () => {
     expect(component.onCheckTodo).toBeDefined()
   })
+
+  it('should onDeleteUser is defined', () => {
+    expect(component.onDeleteTodo).toBeDefined()
+  })
 });
