@@ -1,11 +1,11 @@
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { RouterTestingModule } from "@angular/router/testing";
+import { RouterTestingModule } from "@angular/router/testing"
 import { BlogComponent } from "./blog.component";
 import { Blog } from "./model/blog";
 import { BlogService } from "./services/blog.service";
 
-describe('Blog Component', () => {
+describe('Edit Component', () => {
     let component: BlogComponent;
     let blogService: BlogService;
     let fixture: ComponentFixture<BlogComponent>;

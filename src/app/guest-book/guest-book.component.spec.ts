@@ -130,9 +130,5 @@ describe('GuestBook Component', () => {
         expect(error['required']).toBeTruthy();
     })
 
-    it('Successfully submit from onSubmit ', ()=> {
-        component.guestForm.value.name = 'mock';
-        component.onSubmit();
-    })
 
 })
