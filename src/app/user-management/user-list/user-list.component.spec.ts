@@ -1,25 +1,29 @@
-// import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { UserTodoService } from '../services/user-todo.service';
 
-// import { UserListComponent } from './user-list.component';
+import { UserListComponent } from './user-list.component';
 
-// describe('UserListComponent', () => {
-//   let component: UserListComponent;
-//   let fixture: ComponentFixture<UserListComponent>;
+describe('UserListComponent', () => {
+  let component: UserListComponent;
+  let userService: UserTodoService;
 
-//   beforeEach(async () => {
-//     await TestBed.configureTestingModule({
-//       declarations: [ UserListComponent ]
-//     })
-//     .compileComponents();
-//   });
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule,RouterTestingModule.withRoutes([])],
+      providers: [
+        UserListComponent,
+        {
+          provide: UserTodoService
+        }
+      ]
+    })
+    component = TestBed.inject(UserListComponent);
+    userService = TestBed.inject(UserTodoService)
+  });
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(UserListComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
-
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+  it('should showing users list after create component', () => {
+    expect(component.users).toEqual([]);
+  });
+});
