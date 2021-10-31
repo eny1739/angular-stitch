@@ -70,24 +70,23 @@ export class UserFormComponent implements OnInit {
   }
 
   onSubmitUser(): void {
-    // const user: User = this.userForm.value;
-
-    // console.log('user form value:', user, this);
-
-    // this.userService.saveUser(user)
-    //   .subscribe(() => {
-    //     this.router.navigateByUrl('/user-mangement')
-    //   }, console.error)
-    // this.onReset()
-
     const user =  this.userForm.value;
+
+    this.message = {
+      status: 'success',
+      text: `Congratulation, you added the user ${user.fullName}`
+    }
+
     this.userService.saveUser(user).pipe(
-      // switchMap(()=> this.userService.getAll())
     ).subscribe({
       next: () => {},
       error: console.error,
       complete: () => {}
     })
+
+    setTimeout(() => {
+      this.message = undefined;
+    }, 2000);
 
     this.userForm.reset();
     this.router.navigateByUrl(`/user-management`)
