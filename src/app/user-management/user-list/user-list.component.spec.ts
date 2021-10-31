@@ -61,4 +61,8 @@ describe('UserListComponent', () => {
     expect(component.users).toEqual(userMock)
     expect(component.users.length).toEqual(userMock.length)
   })
+
+  it('should oncheckUser is defined', () => {
+    expect(component.onCheckTodo).toBeDefined()
+  })
 });
