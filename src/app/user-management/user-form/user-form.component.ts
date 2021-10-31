@@ -27,6 +27,7 @@ export class UserFormComponent implements OnInit {
   user?: User;
   message?: AlertMessage;
   id!: string;
+  name?: string;
   userForm: FormGroup = new FormGroup({
     username: new FormControl(null, [Validators.required, Validators.minLength(5)]),
     password: new FormControl(null, [Validators.required, Validators.minLength(5)]),
@@ -70,24 +71,17 @@ export class UserFormComponent implements OnInit {
   }
 
   onSubmitUser(): void {
-    // const user: User = this.userForm.value;
+    const user: User =  this.userForm.value;
 
-    // console.log('user form value:', user, this);
 
-    // this.userService.saveUser(user)
-    //   .subscribe(() => {
-    //     this.router.navigateByUrl('/user-mangement')
-    //   }, console.error)
-    // this.onReset()
-
-    const user =  this.userForm.value;
     this.userService.saveUser(user).pipe(
-      // switchMap(()=> this.userService.getAll())
     ).subscribe({
       next: () => {},
       error: console.error,
       complete: () => {}
     })
+
+    this.name = `${user.fullName}`
 
     this.userForm.reset();
     this.router.navigateByUrl(`/user-management`)

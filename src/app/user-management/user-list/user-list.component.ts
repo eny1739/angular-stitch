@@ -14,7 +14,8 @@ export class UserListComponent implements OnInit {
 
   users: User[] =[]
   loading: boolean = false
-  subcriber?: Observer<any> 
+  subcriber?: Observer<any>
+  
 
   constructor(private readonly userService: UserTodoService, private readonly router:Router) { }
 
@@ -42,7 +43,7 @@ export class UserListComponent implements OnInit {
     .subscribe(this.subcriber)
   }
 
-  onCheckTodo(user: User):void{
+  onCheckUser(user: User):void{
     this.subcriber = {
       next: (user: User) => {
         console.log('user update');
@@ -57,7 +58,7 @@ export class UserListComponent implements OnInit {
     .subscribe(this.subcriber)
   }
 
-  onDeleteTodo(id: string): void{
+  onDeleteUser(id: string): void{
     this.subcriber = {
       next: (users: User[]) => {
         console.log('user deleted');
@@ -66,9 +67,10 @@ export class UserListComponent implements OnInit {
       error: console.error,
       complete: () => {this.loading=false}
     }
+    
     this.loading = true
     this.userService.deleteUser(id)
-    .pipe(delay(500),
+    .pipe(delay(1000),
     switchMap(() => this.userService.getAllUser())
     ).subscribe(this.subcriber)
   }

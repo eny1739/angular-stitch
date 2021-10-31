@@ -55,3 +55,4 @@ describe('Donata service with HTTP service',()=>{
         expect(request.request.method).toBe('GET')
     })
 })
+

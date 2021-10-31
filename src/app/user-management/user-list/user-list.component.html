@@ -1,4 +1,19 @@
-<div class="row mt-5">
+<div class="row mt-5 col-sm">
+
+  <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Stitch Team</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          congratulation you deleted 1 user
+        </div>
+      </div>
+    </div>
+  </div>
+  
 
 <table class="table table-responsive">
     <thead>
@@ -19,9 +34,9 @@
         <td>{{element.fullName}}</td>
         <td>{{element.email}}</td>
         <td>{{element.phone}}</td>
-        <td>
-            <span><button class="btn btn-sm btn-warning" (click)="onCheckTodo(element)"><i class="fas fa-edit"></i></button>
-            </span><button class="btn btn-sm btn-danger" (click)="onDeleteTodo(element.id!)" ><i class="fas fa-trash"></i></button>
+        <td>      
+            <button class="btn btn-warning" (click)="onCheckUser(element)" ><i class="fas fa-edit"></i></button>
+            <button class="btn btn-danger" (click)="onDeleteUser(element.id!)" data-bs-toggle="modal" data-bs-target="#Modal"><i class="fas fa-trash"></i></button>
         </td>
       </tr>
     </tbody>
