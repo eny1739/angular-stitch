@@ -57,7 +57,7 @@ Foto diatas adalah tampilan dari Resume Eny.
 
 Foto diatas adalah tampilan dari Resume Kenji.
 
-### 2. Blog
+### 3. Blog
 
 ![Blog Public](/src/assets/documentation/blog-public.png)
 
@@ -83,7 +83,7 @@ dan disana juga terdapat button view more untuk melihat isi lengkap dari blog te
 
 Button Edit akan mengarahkan ke halaman edit.
 
-### 3. About
+### 4. About
 
 ![About](/src/assets/documentation/about-top.png)
 
@@ -91,7 +91,7 @@ Button Edit akan mengarahkan ke halaman edit.
 
 Foto diatas adalah tampilan untuk halaman About
 
-### 4. Guest Book
+### 5. Guest Book
 
 ![Guest Book Public](/src/assets/documentation/gb-public.png)
 
@@ -101,4 +101,4 @@ Foto diatas adalah tampilan untuk halaman Public. Disana terdapat form untuk men
 
 Sedangkan diatas adalah tampilan untuk admin. Terdapat tambahan list dari siapa saja yang sudah mengisi form tersebut. Disana juga terdapat Button Edit yang digunakan untuk mengedit inputan dari user. Dan ada Button Delete untuk menghapus inputan dari user.
 
-### 5. Donation
+### 6. Donation

@@ -1,65 +1,83 @@
 <div class="col-sm card my-2 p-3 shadow container">
   <div class="row d-flex justify-content-center">
     <div class="text-center">
-      <h2 style="color: cornflowerblue; margin-bottom: -90px;">User List</h2>
+      <h2 style="color: cornflowerblue; margin-bottom: -90px">User List</h2>
     </div>
   </div>
-<div class="row mt-5 col-sm" >
-
-  <div class="modal fade container" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Stitch Team</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          congratulation you deleted 1 user
+  <div class="row mt-5 col-sm">
+    <div
+      class="modal fade container"
+      id="Modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Stitch Team</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">congratulation you deleted 1 user</div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="col-lg-4 offset-lg-8">
-    <div class="input-group my-3">
-      <span class="input-group-text">
-        <i class="fas fa-search"></i>
-      </span>
-      <input
-      class="form-control"
-      type="search"
-      placeholder="Search"
-      aria-label="Search"
-      [(ngModel)]="searchData"
-    />
+    <div class="col-lg-4 offset-lg-8">
+      <div class="input-group my-3">
+        <span class="input-group-text">
+          <i class="fas fa-search"></i>
+        </span>
+        <input
+          class="form-control"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          [(ngModel)]="searchData"
+        />
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">User Id</th>
+            <th scope="col">Username</th>
+            <th scope="col">Password</th>
+            <th scope="col">FullName</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let element of users | filter: searchData">
+            <td>{{ element.id }}</td>
+            <td>{{ element.username }}</td>
+            <td>{{ element.password }}</td>
+            <td>{{ element.fullName }}</td>
+            <td>{{ element.email }}</td>
+            <td>{{ element.phone }}</td>
+            <td>
+              <button class="btn btn-warning" (click)="onCheckUser(element)">
+                edit
+              </button>
+              <button
+                class="btn btn-danger"
+                (click)="onDeleteUser(element.id!)"
+                data-bs-toggle="modal"
+                data-bs-target="#Modal"
+              >
+                delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  <table class="table table-responsive">
-    <thead>
-      <tr>
-        <th scope="col">User Id</th>
-        <th scope="col">Username</th>
-        <th scope="col">Password</th>
-        <th scope="col">FullName</th>
-        <th scope="col">Email</th>
-        <th scope="col">Phone</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor = "let element of users | filter:searchData">
-        <td>{{element.id}}</td>
-        <td>{{element.username}}</td>
-        <td>{{element.password}}</td>
-        <td>{{element.fullName}}</td>
-        <td>{{element.email}}</td>
-        <td>{{element.phone}}</td>
-        <td>
-      
-            <button class="btn btn-warning" (click)="onCheckUser(element)" >edit</button>
-            <button class="btn btn-danger" (click)="onDeleteUser(element.id!)" data-bs-toggle="modal" data-bs-target="#Modal">delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 </div>
