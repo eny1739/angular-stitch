@@ -51,7 +51,7 @@ describe('GuestBookService with HTTP Service', () => {
   })
 
   it('Should be equal with mock while PUT from api/guest-book',() => {
-    const url = '/api/pages/group3/guest-book/';
+    const url = '/api/guest-book/';
     const mockGuest: GuestBook ={
       id: '1',
       name: 'mock',
