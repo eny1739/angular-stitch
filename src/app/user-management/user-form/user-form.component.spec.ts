@@ -3,6 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { UserTodoService } from '../services/user-todo.service';
 import { UserFormComponent } from './user-form.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 
 describe('UserFormComponent', () => {
   let component: UserFormComponent;
@@ -39,5 +40,18 @@ describe('UserFormComponent', () => {
     expect(component.userForm).toBeDefined();
     expect(component.userForm.valid).toBeDefined();
     expect(component.userForm.invalid).toBeDefined()
+  })
+
+  it('userForm field validity', () => {
+    let error: ValidationErrors = {};
+    let name: AbstractControl = component.userForm.controls['username'] as AbstractControl
+    expect(name.valid).toBeFalse()
+
+    error = name.errors || {};
+    expect(error['required']).toBeTruthy()
+
+    component.userForm.get('name')?.setValue('siapa')
+    error = name.errors!['minlength'] || {};
+    expect(error).toBeTruthy
   })
 });
