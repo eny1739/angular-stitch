@@ -31,12 +31,6 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'my-personal-page'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('my-personal-page');
-  });
-
   it("Should have <app-header></app-header>", () => {
     const appHeader =  element.querySelector("app-header")
     expect(appHeader).toBeTruthy();
@@ -47,4 +41,16 @@ describe('AppComponent', () => {
     expect(appfooter).toBeTruthy();
   })
   
+  it(`should have as title 'Stitch's World App'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual("Stitch's World App");
+  });
+
+  it('should render title', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.content span')?.textContent).toBeUndefined();
+  });
 });
