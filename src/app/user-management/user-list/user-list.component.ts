@@ -42,7 +42,7 @@ export class UserListComponent implements OnInit {
     .subscribe(this.subcriber)
   }
 
-  onCheckTodo(user: User):void{
+  onCheckUser(user: User):void{
     this.subcriber = {
       next: (user: User) => {
         console.log('user update');
@@ -57,7 +57,7 @@ export class UserListComponent implements OnInit {
     .subscribe(this.subcriber)
   }
 
-  onDeleteTodo(id: string): void{
+  onDeleteUser(id: string): void{
     this.subcriber = {
       next: (users: User[]) => {
         console.log('user deleted');
