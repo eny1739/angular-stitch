@@ -118,3 +118,8 @@ Dan foto diatas adalah tampilan dari daftar user yang sudah terdaftar di website
 ![Login](/src/assets/documentation/login.png)
 
 Foto ini adalah tampilan dari halaman login yang digunakan untuk user untuk login ke dalam halaman yang bisa diakes oleh user.
+
+### 8. Test Coverage
+![Coverage Test](/src/assets/documentation/coverage-top.png)
+![Coverage Test](/src/assets/documentation/coverage-bottom.png)
+Foto ini menampilkan hasil testing secara keseluruhan yang dilakukan terhadap web app kami
