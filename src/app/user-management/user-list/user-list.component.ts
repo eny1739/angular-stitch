@@ -14,8 +14,8 @@ export class UserListComponent implements OnInit {
 
   users: User[] =[]
   loading: boolean = false
-  subcriber?: Observer<any>
-  
+  subcriber?: Observer<any> 
+  searchData!: string;
 
   constructor(private readonly userService: UserTodoService, private readonly router:Router) { }
 

@@ -70,4 +70,8 @@ describe('UserListComponent', () => {
   it('should onDeleteUser is defined', () => {
     expect(component.onDeleteUser).toBeDefined()
   })
+
+  it('should getaluser is defined', () => {
+    expect(component.getAll).toBeDefined()
+  })
 });

@@ -15,6 +15,7 @@ export class BlogComponent implements OnInit {
 
   blogs: Blog[] = [];
   isEditing: boolean = false;
+  searchData!: string;
 
   constructor(private readonly blogService: BlogService, private readonly activatedRoute: ActivatedRoute, private readonly router: Router) { }
 

@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewMoreComponent } from './components/view-more/view-more.component';
 import { EditComponent } from './components/edit/edit.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -20,7 +21,9 @@ import { EditComponent } from './components/edit/edit.component';
     BlogRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    Ng2SearchPipeModule
+
   ]
 })
 export class BlogModule { }

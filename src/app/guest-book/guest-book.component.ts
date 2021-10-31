@@ -30,6 +30,7 @@ export class GuestBookComponent implements OnInit {
   }
 
   guests: GuestBook[] = [];
+  searchData!: string;
 
   guestForm: FormGroup = new FormGroup({
     name: new FormControl(null, [Validators.required]),

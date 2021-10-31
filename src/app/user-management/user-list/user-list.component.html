@@ -21,7 +21,13 @@
   </div>
   
   
-
+  <input
+  class="form-control me-auto"
+  type="search"
+  placeholder="Search"
+  aria-label="Search"
+  [(ngModel)]="searchData"
+/>
 <table class="table">
     <thead>
       <tr>
@@ -34,7 +40,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor = "let element of users">
+      <tr *ngFor = "let element of users | filter:searchData">
         <td>{{element.id}}</td>
         <td>{{element.username}}</td>
         <td>{{element.password}}</td>
