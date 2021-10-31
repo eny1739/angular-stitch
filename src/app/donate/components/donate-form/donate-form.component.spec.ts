@@ -1,5 +1,6 @@
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { AbstractControl, ValidationErrors } from "@angular/forms";
 import { RouterTestingModule } from "@angular/router/testing";
 import { DonateService } from "../../service/donate.service";
 import { DonateFormComponent } from "./donate-form.component"
@@ -37,5 +38,14 @@ describe('DonationFormComponent', ()=>{
         expect(component.donationForm).toBeDefined();
         expect(component.donationForm.valid).toBeDefined();
         expect(component.donationForm.invalid).toBeDefined();
+    })
+
+    it('donationForm field validity',()=>{
+        let error: ValidationErrors = {}
+        let donor: AbstractControl = component.donationForm.controls['donor'] as AbstractControl
+        expect(donor.valid).toBeFalse()
+
+        error = donor.errors || {};
+        expect(error['required']).toBeTruthy()
     })
 })
