@@ -1,117 +1,134 @@
-<div class="col-sm card my-3 p-2 shadow">
+<div class="col-sm card my-3 p-2 shadow container">
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog text-center">
-    <div class="modal-content">
-      <div class="modal-header text-primary">
-        <h5 class="modal-title justify-content-center" id="exampleModalLabel" style="color: darkgoldenrod;">Added user</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-bookmark-x-fill"></i></button>
+  <div class="modal fade container" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog text-center">
+      <div class="modal-content">
+        <div class="modal-header text-primary">
+          <h5 class="modal-title justify-content-center" id="exampleModalLabel" style="color: darkgoldenrod;">Added user
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
+              class="bi bi-bookmark-x-fill"></i></button>
+        </div>
+        <p class="fs-6 fst-italic" style="background: chartreuse;">congratulation you added new user with name: {{ name
+          }}</p>
+        <div class="modal-body">
+          <img src="../../../assets/image/moving-flower.gif" class="rounded mx-auto d-block" alt="picture">
+        </div>
+        <p class="fs-5 fst-italic link-warning">Have a nice day </p>
       </div>
-      <p class="fs-6 fst-italic" style="background: chartreuse;">congratulation you added new user with name: {{ name }}</p>
-      <div class="modal-body">
-        <img src="../../../assets/image/moving-flower.gif" class="rounded mx-auto d-block" alt="picture">
-      </div>
-      <p class="fs-5 fst-italic link-warning">Have a nice day </p>
     </div>
   </div>
-</div>
 
 
+  <div>
 
-<div class="body">
-<form [formGroup]="userForm">
-    <div class="row d-flex justify-content-center">
-      <div class="col-sm-9">
-        <h2 style="color: cornflowerblue; margin-bottom: -90px;">User Form</h2>
-      </div>
-    </div>
-  <div class="row mt-5">
-    <div class="col-sm-6">
-    <div class="row g-3 align-items-center fw-bolder mb-3 has-validation">
-      <div class="col-3">
-        <label class="col-form-label">Username</label>
-      </div>
-      <div class="col-6 ">
-        <input type="text" [ngClass]="isFieldValid('username')" formControlName="username" [value]="user?.username" class="form-control " aria-describedby="username" >
-      </div>
-      <div class="invalid-feedback" validation-message [control]="getCOntrol('username')"></div>
-    </div>
 
-    <div class="row g-3 align-items-center fw-bolder mb-3 has-validation">
-      <div class="col-3">
-        <label class="col-form-label">Password</label>
-      </div>
-      <div class="col-6">
-        <input type="password" [ngClass]="isFieldValid('password')" formControlName="password" [value]="user?.password" class="form-control" aria-describedby="password">
-      </div>
-      <div class="invalid-feedback" validation-message [control]="getCOntrol('password')"></div>
-    </div>
-    
-    <div class="row g-3 align-items-center fw-bolder mb-3 has-validation">
-      <div class="col-3">
-        <label class="col-form-label">FullName</label>
-      </div>
-      <div class="col-6">
-        <input type="text" [ngClass]="isFieldValid('fullName')" formControlName="fullName" [value]="user?.fullName" class="form-control" aria-describedby="fullName">
-      </div>
-      <div class="invalid-feedback" validation-message [control]="getCOntrol('fullName')"></div>
-    </div>
-    
-    <div class="row g-3 align-items-center fw-bolder mb-3 has-validation">
-      <div class="col-3">
-        <label class="col-form-label">Email</label>
-      </div>
-      <div class="col-6">
-        <input type="email" [ngClass]="isFieldValid('email')" formControlName="email" [value]="user?.email" class="form-control" aria-describedby="email">
-      </div>
-      <div class="invalid-feedback" validation-message [control]="getCOntrol('email')"></div>
-    </div>
-    
-    <div class="row g-3 align-items-center fw-bolder mb-3 has-validation">
-      <div class="col-3">
-        <label class="col-form-label">Phone</label>
-      </div>
-      <div class="col-6">
-        <input type="text" [ngClass]="isFieldValid('phone')" formControlName="phone" [value]="user?.phone" class="form-control" aria-describedby="phone">
-      </div>
-      <div class="invalid-feedback" validation-message [control]="getCOntrol('phone')"></div>
-    </div>
-    
-  </div>
-    <div class="col-sm-6">
-      <div class="row">
-        <!-- picture -->
-      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner justify-content-center">
-          <div class="carousel-item active">
-            <img src="../../../assets/image/future2.jpg" class="d-block w-20" alt="pictcure girl">
-          </div>
-          <div class="carousel-item">
-            <img src="../../../assets/image/future2.jpg" class="d-block w-20" alt="picture motorcycle">
-          </div>
-          <div class="carousel-item">
-            <img src="../../../assets/image/future2.jpg" class="d-block w-20" alt="picture car">
+    <div class="body row container justify-content-between">
+      <form [formGroup]="userForm" class="col-sm-6">
+        <div class="row d-flex justify-content-center">
+          <div class="col-sm-9" style="margin-top: -30px;">
+            <h2 style="color: cornflowerblue; margin-bottom: -6000px;">User Form</h2>
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+        <div class="row mt-5">
+          <div class="">
+            <div class="row g-3 align-items-center fw-bolder mb-3 has-validation">
+              <div class="col-4">
+                <label class="col-form-label">Username</label>
+              </div>
+              <div class="col-8">
+                <input type="text" [ngClass]="isFieldValid('username')" formControlName="username"
+                  [value]="user?.username" class="form-control " aria-describedby="username">
+              </div>
+              <div class="invalid-feedback" validation-message [control]="getCOntrol('username')"></div>
+            </div>
+
+            <div class="row g-3 align-items-center fw-bolder mb-3 has-validation">
+              <div class="col-4">
+                <label class="col-form-label">Password</label>
+              </div>
+              <div class="col-8">
+                <input type="password" [ngClass]="isFieldValid('password')" formControlName="password"
+                  [value]="user?.password" class="form-control" aria-describedby="password">
+              </div>
+              <div class="invalid-feedback" validation-message [control]="getCOntrol('password')"></div>
+            </div>
+
+            <div class="row g-3 align-items-center fw-bolder mb-3 has-validation">
+              <div class="col-4">
+                <label class="col-form-label">FullName</label>
+              </div>
+              <div class="col-8">
+                <input type="text" [ngClass]="isFieldValid('fullName')" formControlName="fullName"
+                  [value]="user?.fullName" class="form-control" aria-describedby="fullName">
+              </div>
+              <div class="invalid-feedback" validation-message [control]="getCOntrol('fullName')"></div>
+            </div>
+
+            <div class="row g-3 align-items-center fw-bolder mb-3 has-validation">
+              <div class="col-4">
+                <label class="col-form-label">Email</label>
+              </div>
+              <div class="col-8">
+                <input type="email" [ngClass]="isFieldValid('email')" formControlName="email" [value]="user?.email"
+                  class="form-control" aria-describedby="email">
+              </div>
+              <div class="invalid-feedback" validation-message [control]="getCOntrol('email')"></div>
+            </div>
+
+            <div class="row g-3 align-items-center fw-bolder mb-3 has-validation">
+              <div class="col-4">
+                <label class="col-form-label">Phone</label>
+              </div>
+              <div class="col-8">
+                <input type="text" [ngClass]="isFieldValid('phone')" formControlName="phone" [value]="user?.phone"
+                  class="form-control" aria-describedby="phone">
+              </div>
+              <div class="invalid-feedback" validation-message [control]="getCOntrol('phone')"></div>
+            </div>
+
+            <div class="row container">
+              <div class="col-sm-6 d-flex justify-content-center w-100">
+                <button class="btn btn-primary ms-5 " (click)="onSubmitUser()" [disabled]="userForm.invalid"
+                  data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-dismiss="modal"><i
+                    class="fas fa-save"></i></button>
+                <button type="reset" class="btn btn-danger ms-3" (click)="onReset()" [disabled]="userForm.invalid"><i
+                    class="fas fa-trash"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="col-sm-6">
+        <div class="row">
+          <!-- picture -->
+          <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner justify-content-center">
+              <div class="carousel-item active">
+                <img src="../../../assets/image/future2.jpg" class="d-block w-20" alt="pictcure girl">
+              </div>
+              <div class="carousel-item">
+                <img src="../../../assets/image/future2.jpg" class="d-block w-20" alt="picture motorcycle">
+              </div>
+              <div class="carousel-item">
+                <img src="../../../assets/image/future2.jpg" class="d-block w-20" alt="picture car">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
       </div>
-      </div>
-    </div>    
+    </div>
   </div>
-  
-  <div class="row">
-  <div class="col-sm-6 justify-content-center" style="margin-top: -80px; margin-left: 150px;">
-    <button class="btn btn-primary ms-5 " (click)="onSubmitUser()" [disabled]="userForm.invalid" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-dismiss="modal"><i class="fas fa-save"></i></button>
-    <button type="reset" class="btn btn-danger ms-3" (click)="onReset()" [disabled]="userForm.invalid"><i class="fas fa-trash"></i></button>
-  </div>
-  </div>
-</form>
-</div>
 </div>
