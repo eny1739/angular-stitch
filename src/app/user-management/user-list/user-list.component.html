@@ -1,4 +1,19 @@
-<div class="row mt-5">
+<div class="row mt-5 col-sm">
+
+  <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Stitch Team</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          congratulation you deleted 1 user
+        </div>
+      </div>
+    </div>
+  </div>
+  
 
 <table class="table">
     <thead>
@@ -21,8 +36,8 @@
         <td>{{element.phone}}</td>
         <td>
       
-            <button class="btn btn-warning" (click)="onCheckTodo(element)">edit</button>
-            <button class="btn btn-danger" (click)="onDeleteTodo(element.id!)" >delete</button>
+            <button class="btn btn-warning" (click)="onCheckUser(element)" >edit</button>
+            <button class="btn btn-danger" (click)="onDeleteUser(element.id!)" data-bs-toggle="modal" data-bs-target="#Modal">delete</button>
         </td>
       </tr>
     </tbody>

@@ -27,6 +27,7 @@ export class UserFormComponent implements OnInit {
   user?: User;
   message?: AlertMessage;
   id!: string;
+  name?: string;
   userForm: FormGroup = new FormGroup({
     username: new FormControl(null, [Validators.required, Validators.minLength(5)]),
     password: new FormControl(null, [Validators.required, Validators.minLength(5)]),
@@ -70,12 +71,8 @@ export class UserFormComponent implements OnInit {
   }
 
   onSubmitUser(): void {
-    const user =  this.userForm.value;
+    const user: User =  this.userForm.value;
 
-    this.message = {
-      status: 'success',
-      text: `Congratulation, you added the user ${user.fullName}`
-    }
 
     this.userService.saveUser(user).pipe(
     ).subscribe({
@@ -84,9 +81,7 @@ export class UserFormComponent implements OnInit {
       complete: () => {}
     })
 
-    setTimeout(() => {
-      this.message = undefined;
-    }, 2000);
+    this.name = `${user.fullName}`
 
     this.userForm.reset();
     this.router.navigateByUrl(`/user-management`)
