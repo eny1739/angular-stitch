@@ -1,10 +1,10 @@
 # My Personal Page (Stitch's World)
 
-Stitch's World is a group's task to proceed from the personal resume website application with an additional two modules as the Angular class final project
+Stitch's World merupakan tugas kelompok yang melanjutkan dari apliaksi personal resume, dengan ada 2 tambahan modul sebagai tugas akhir kelas Angular
 
 ## Stitch Team
 
-Our team consisted of:
+Kelompok kami terdiri dari 3 orang, yaitu :
 
 1. Brandsma Siringoringo
 2. Eny Sulistyowati
@@ -12,7 +12,7 @@ Our team consisted of:
 
 ## Module
 
-This website application consisted of several modules :
+Aplikasi kami terdiri dari beberapa modul, yaitu :
 
 1. Home
 2. Resume
@@ -27,17 +27,15 @@ This website application consisted of several modules :
 
 ![Home](/src/assets/documentation/Home.png)
 
-Tab Home contains a headline from our group that buttons trigger to open modal that contains form to make donation.
+Tab Home berisikan headline dari kelompok kami yang disana terdapat tombol untuk donate.
 
 ![Home](/src/assets/documentation/Home3.png)
 
-This button trigger to open
-
-Button tersebut akan mengeluarkan popup form untuk mengisi formulir donasi, form tersebut terdapat beberapa input, antara lain Nama Donatur, Jumlah Donasi, Pesan, serta terdapat metode pembayaran yang bisa dipilih, antara lain LinkSini dan DONO.
+Tombol tersebut akan mengeluarkan popup form untuk mengisi formulir donasi, form tersebut terdapat beberapa input, antara lain Nama Donatur, Jumlah Donasi, Pesan, serta terdapat metode pembayaran yang bisa dipilih, antara lain LinkSini dan DONO.
 
 ![Home](/src/assets/documentation/Home2.png)
 
-Dan di bagian paling bawah tab Home terdapat deskripsi dari tim kami, disana jug terdapat button View Details yang akan mengarahkan ke halaman resume masing - masing.
+Dan di bagian paling bawah tab Home terdapat deskripsi dari tim kami, disana jug terdapat tombol View Details yang akan mengarahkan ke halaman resume masing - masing.
 
 ### 2. Resume
 
@@ -65,11 +63,11 @@ Foto ditas adalah tampilan halaman Blog untuk public, disana terdapat kolom penc
 
 ![Blog Content](/src/assets/documentation/blog-content.png)
 
-dan disana juga terdapat button view more untuk melihat isi lengkap dari blog tersebut.
+dan disana juga terdapat tombol view more untuk melihat isi lengkap dari blog tersebut.
 
 ![Blog Admin](/src/assets/documentation/blog-admin.png)
 
-Foto ditas adalah tampilan halaman Blog untuk admin, disana terdapat kolom pencarian untuk mencari blog, dan terdapat button untuk membuat blog. Button tersebut digunakan untuk menampilkan form untuk membuat blog.
+Foto ditas adalah tampilan halaman Blog untuk admin, disana terdapat kolom pencarian untuk mencari blog, dan terdapat tombol untuk membuat blog. tombol tersebut digunakan untuk menampilkan form untuk membuat blog.
 
 ![Create Blog](/src/assets/documentation/create-blog.png)
 
@@ -77,11 +75,11 @@ Dalam form ini terdapat input title untuk judul dan input content untuk content 
 
 ![Blog Content Admin](/src/assets/documentation/blog-content-admin.png)
 
-dan disana juga terdapat button view more untuk melihat isi lengkap dari blog tersebut. Dan ada tambahan button untuk admin yaitu Edit dan Delete. Button Delete diguanakan untuk menghapus blog.
+dan disana juga terdapat tombol view more untuk melihat isi lengkap dari blog tersebut. Dan ada tambahan tombol untuk admin yaitu Edit dan Delete. tombol Delete diguanakan untuk menghapus blog.
 
 ![Edit Blog](/src/assets/documentation/edit-blog.png)
 
-Button Edit akan mengarahkan ke halaman edit.
+tombol Edit akan mengarahkan ke halaman edit.
 
 ### 4. About
 
@@ -99,6 +97,24 @@ Foto diatas adalah tampilan untuk halaman Public. Disana terdapat form untuk men
 
 ![Guest Book Admin](/src/assets/documentation/gb-admin.png)
 
-Sedangkan diatas adalah tampilan untuk admin. Terdapat tambahan list dari siapa saja yang sudah mengisi form tersebut. Disana juga terdapat Button Edit yang digunakan untuk mengedit inputan dari user. Dan ada Button Delete untuk menghapus inputan dari user.
+Sedangkan diatas adalah tampilan untuk admin. Terdapat tambahan list dari siapa saja yang sudah mengisi form tersebut. Disana juga terdapat tombol Edit yang digunakan untuk mengedit inputan dari user. Dan ada tombol Delete untuk menghapus inputan dari user.
 
 ### 6. Donation
+
+![Donation Board](/src/assets/documentation/donation.png)
+
+Foto diatas adalah halaman untuk menampilkan list donasi yang telah diberikan
+
+### 7. User Management
+
+![User Management](/src/assets/documentation/user-management-top.png)
+
+Halaman ini menampilkan form berupa inputan untuk menambahkan user, yang terdiri dari Username, Password, Full Name, Email, dan Phone.
+
+![User Management](/src/assets/documentation/user-management-bot.png)
+
+Dan foto diatas adalah tampilan dari daftar user yang sudah terdaftar di website kami.
+
+![Login](/src/assets/documentation/login.png)
+
+Foto ini adalah tampilan dari halaman login yang digunakan untuk user untuk login ke dalam halaman yang bisa diakes oleh user.
