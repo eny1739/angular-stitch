@@ -34,13 +34,14 @@ export class GuestBookComponent implements OnInit {
   guestForm: FormGroup = new FormGroup({
     name: new FormControl(null, [Validators.required]),
     email: new FormControl(null, [Validators.required, Validators.email]),
-    message: new FormControl(" "),
+    message: new FormControl(null),
 
   })
 
 
   onSubmit(): void{
     const guest = this.guestForm.value;
+    if(!guest.message) guest.message = " ";
     if(this.isLoggedIn()){
       this.guestService.save(guest).pipe(
         switchMap(()=> this.guestService.getAll())
