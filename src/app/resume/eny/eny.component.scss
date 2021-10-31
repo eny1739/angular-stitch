@@ -1,3 +1,9 @@
 .part {
   font-family: "Explora", cursive;
 }
+
+@media screen and (max-width: 576px) {
+  .resp{
+    font-size: 0.5rem;
+  }
+}

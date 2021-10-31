@@ -115,13 +115,20 @@
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <input
-          class="form-control me-auto"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-          [(ngModel)]="searchData"
-        />
+        <div class="col-lg-4 offset-lg-8">
+          <div class="input-group my-3">
+            <span class="input-group-text">
+              <i class="fas fa-search"></i>
+            </span>
+            <input
+            class="form-control"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+            [(ngModel)]="searchData"
+          />
+          </div>
+        </div>
         <div class="col" *ngFor="let blog of blogs | filter: searchData">
           <div class="card">
             <h5 class="card-header">{{ blog.title | titlecase }}</h5>
