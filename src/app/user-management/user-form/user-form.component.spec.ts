@@ -1,14 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { RouterTestingModule } from '@angular/router/testing';
+import { UserTodoService } from '../services/user-todo.service';
 import { UserFormComponent } from './user-form.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing'
 
 describe('UserFormComponent', () => {
   let component: UserFormComponent;
   let fixture: ComponentFixture<UserFormComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ UserFormComponent ]
+    TestBed.configureTestingModule({
+      declarations: [ UserFormComponent ],
+      imports: [HttpClientTestingModule,RouterTestingModule.withRoutes([])],
+      providers: [UserTodoService]
     })
     .compileComponents();
   });
@@ -19,7 +23,15 @@ describe('UserFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  const formUser = (id: string, username: string, password: string, fullName: string, email: string, phone: string) => {
+    component.userForm.controls['username'].setValue(username);
+    component.userForm.controls['password'].setValue(password);
+    component.userForm.controls['fullName'].setValue(fullName);
+    component.userForm.controls['email'].setValue(email);
+    component.userForm.controls['phone'].setValue(phone);
+  }
+
+  it('component user created', () => {
     expect(component).toBeTruthy();
-  });
+  })
 });
