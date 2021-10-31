@@ -1,4 +1,5 @@
 import { TestBed } from "@angular/core/testing"
+import { Ng2SearchPipe, Ng2SearchPipeModule } from "ng2-search-filter"
 import { AboutModule } from "./about/about.module"
 import { AppModule } from "./app.module"
 import { AuthModule } from "./auth/auth.module"
@@ -23,7 +24,7 @@ describe("Module Test", () => {
                 DonateModule,
                 BlogModule,
                 AuthModule,
-                AboutModule
+                AboutModule,
             ]
         })
     })
