@@ -13,6 +13,19 @@
 
     .loginImage{
         height:auto;
-        width: 41vw;
+        width: 90vw;
     }
 }
+
+@media screen and (max-width: 992px){
+    .container{
+        padding-top: 25%;
+        padding-bottom: 48%;
+    }
+
+    .loginImage{
+        height: auto;
+        width: 70vw;
+    }
+}
+

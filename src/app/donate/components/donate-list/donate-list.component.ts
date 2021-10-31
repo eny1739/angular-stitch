@@ -29,11 +29,6 @@ export class DonateListComponent implements OnInit {
     })
   }
 
-  // sumAmount():number {
-  //   this.getAll();
-  //   for(let )
-  //   return 2
-  // }
 
   getAll():void{
     this.subscriber = {
