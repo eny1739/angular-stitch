@@ -1,45 +1,65 @@
 <div class="row mt-5 col-sm">
-
-  <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div
+    class="modal fade"
+    id="Modal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Stitch Team</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
-        <div class="modal-body">
-          congratulation you deleted 1 user
-        </div>
+        <div class="modal-body">congratulation you deleted 1 user</div>
       </div>
     </div>
   </div>
-  
 
-<table class="table table-responsive">
+  <input
+    class="form-control me-auto"
+    type="search"
+    placeholder="Search"
+    aria-label="Search"
+    [(ngModel)]="searchData"
+  />
+  <table class="table table-responsive">
     <thead>
       <tr>
         <th scope="col">User Id</th>
         <th scope="col">Username</th>
-        <th scope="col">Password</th>
         <th scope="col">FullName</th>
         <th scope="col">Email</th>
         <th scope="col">Phone</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor = "let element of users">
-        <td>{{element.id}}</td>
-        <td>{{element.username}}</td>
-        <td>{{element.password}}</td>
-        <td>{{element.fullName}}</td>
-        <td>{{element.email}}</td>
-        <td>{{element.phone}}</td>
-        <td>      
-            <button class="btn btn-warning" (click)="onCheckUser(element)" ><i class="fas fa-edit"></i></button>
-            <button class="btn btn-danger" (click)="onDeleteUser(element.id!)" data-bs-toggle="modal" data-bs-target="#Modal"><i class="fas fa-trash"></i></button>
+      <tr *ngFor="let element of users | filter: searchData">
+        <td>{{ element.id }}</td>
+        <td>{{ element.username }}</td>
+        <td>{{ element.fullName }}</td>
+        <td>{{ element.email }}</td>
+        <td>{{ element.phone }}</td>
+        <td>
+          <button class="btn btn-warning" (click)="onCheckUser(element)">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button
+            class="btn btn-danger"
+            (click)="onDeleteUser(element.id!)"
+            data-bs-toggle="modal"
+            data-bs-target="#Modal"
+          >
+            <i class="fas fa-trash"></i>
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
-
 </div>

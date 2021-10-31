@@ -8,6 +8,7 @@ import { DonateFormComponent } from './components/donate-form/donate-form.compon
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { DonateService } from './service/donate.service';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { DonateService } from './service/donate.service';
     DonateRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    Ng2SearchPipeModule
   ],
   exports: [
     DonateComponent,

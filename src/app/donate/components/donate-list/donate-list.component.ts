@@ -15,6 +15,7 @@ export class DonateListComponent implements OnInit {
   loading:boolean = false;
   subscriber!:Observer<any>;
   totalDonation:number = 0;
+  searchData!: string;
 
 
   constructor(private readonly donateService:DonateService) { }

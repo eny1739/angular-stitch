@@ -27,7 +27,7 @@ export class GuestBookService {
 
   public save(guestBook: GuestBook): Observable<void> {
     if (guestBook.id) {
-      return this.http.put<GuestBook>(`/api/pages/group3/guest-book/`, guestBook)
+      return this.http.put<GuestBook>(`/api/guest-book/`, guestBook)
       .pipe(
         map(()=> this.guestSubject.next(true))
       )
