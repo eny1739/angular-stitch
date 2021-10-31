@@ -87,13 +87,22 @@
     <div class="card bg-app">
       <div class="card-header">Guest List</div>
       <div class="card-body">
-        <input
-          class="form-control me-auto"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-          [(ngModel)]="searchData"
-        />
+        <div class="row">
+          <div class="col-lg-4 offset-lg-8">
+            <div class="input-group my-3">
+              <span class="input-group-text">
+                <i class="fas fa-search"></i>
+              </span>
+              <input
+              class="form-control"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              [(ngModel)]="searchData"
+            />
+            </div>
+          </div>
+        </div>
         <div class="table-responsive">
           <table datatable class="table text-center">
             <thead class="">

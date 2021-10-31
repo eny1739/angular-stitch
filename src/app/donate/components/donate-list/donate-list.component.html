@@ -1,11 +1,21 @@
 <div class="card shadow">
-  <input
-    class="form-control me-auto"
-    type="search"
-    placeholder="Search"
-    aria-label="Search"
-    [(ngModel)]="searchData"
-  />
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 offset-lg-8">
+        <div class="input-group my-3">
+          <span class="input-group-text">
+            <i class="fas fa-search"></i>
+          </span>
+          <input
+          class="form-control"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          [(ngModel)]="searchData"
+        />
+        </div>
+      </div>
+    </div>
   <div class="table-responsive">
     <table class="table">
       <thead class="table-dark">
@@ -26,12 +36,13 @@
           </tr>
         </ng-container>
         <tr>
-          <td>Jumlah Donasi</td>
+          <th>Jumlah Donasi</th>
           <td></td>
           <td></td>
-          <td>{{ totalDonation | currency: "IDR " }}</td>
+          <th>{{ totalDonation | currency: "IDR " }}</th>
         </tr>
       </tbody>
     </table>
   </div>
+</div>
 </div>
