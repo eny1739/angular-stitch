@@ -115,7 +115,14 @@
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col" *ngFor="let blog of blogs">
+        <input
+          class="form-control me-auto"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+          [(ngModel)]="searchData"
+        />
+        <div class="col" *ngFor="let blog of blogs | filter: searchData">
           <div class="card">
             <h5 class="card-header">{{ blog.title | titlecase }}</h5>
             <div class="card-body">
