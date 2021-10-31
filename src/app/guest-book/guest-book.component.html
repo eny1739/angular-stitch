@@ -6,14 +6,16 @@
         <form [formGroup]="guestForm" (ngSubmit)="onSubmit()">
           <div class="row mb-3">
             <div class="col">
-              <div class="input-group mb-3 has-validation">
+              <div class="form-floating mb-3 has-validation">
                 <input
+                  id="floatingName"
                   type="text"
                   class="form-control"
                   [ngClass]="isFieldValid('name')"
                   placeholder="Name"
                   formControlName="name"
                 />
+                <label for="floatingName">Name</label>
                 <div
                   class="invalid-feedback"
                   validation-message
@@ -23,7 +25,7 @@
               </div>
             </div>
             <div class="col">
-              <div class="input-group mb-3 has-validation">
+              <div class="form-floating mb-3 has-validation">
                 <input
                   type="email"
                   class="form-control"
@@ -31,6 +33,7 @@
                   placeholder="Email Address"
                   formControlName="email"
                 />
+                <label for="">Email Address</label>
                 <div
                   class="invalid-feedback"
                   validation-message
@@ -42,18 +45,30 @@
           </div>
           <div class="row">
             <div class="col">
-              <div class="input-group mb-3 has-validation">
+              <div class="form-floating mb-3 has-validation">
                 <textarea
+                  id="textarea"
                   cols="30"
                   rows="5"
                   type="text"
                   class="form-control"
-                  maxlength="100"
+                  style="height: 100px"
+                  maxlength="150"
                   placeholder="Message"
                   formControlName="message"
                 ></textarea>
-                <div class="invalid-feedback"></div>
+                <label for="textarea">Message</label>
               </div>
+              <!-- <div class="form-floating">
+                <textarea
+                  class="form-control"
+                  placeholder="Leave a comment here"
+                  id="floatingTextarea2"
+                  style="height: 100px"
+                  formControlName="message"
+                ></textarea>
+                <label for="floatingTextarea2">Message</label>
+              </div> -->
             </div>
           </div>
 
@@ -95,7 +110,7 @@
               <tr class="align-middle" *ngFor="let guest of guests">
                 <td>{{ guest.id }}</td>
                 <td>{{ guest.name | titlecase }}</td>
-                <td>{{ guest.email }}</td>
+                <td innerHTML="{{ guest.email | email }}"></td>
                 <td>{{ guest.message }}</td>
 
                 <td>

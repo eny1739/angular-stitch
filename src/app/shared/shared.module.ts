@@ -4,6 +4,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ValidationMessageComponent } from './components/validation-message/validation-message.component';
 import { RouterModule } from '@angular/router';
+import { EmailPipe } from './pipes/email.pipe';
 
 
 
@@ -11,7 +12,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     HeaderComponent,
     FooterComponent,
-    ValidationMessageComponent
+    ValidationMessageComponent,
+    EmailPipe
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { RouterModule } from '@angular/router';
   exports:[
     HeaderComponent,
     FooterComponent,
-    ValidationMessageComponent
+    ValidationMessageComponent,
+    EmailPipe
   ]
 })
 export class SharedModule { }

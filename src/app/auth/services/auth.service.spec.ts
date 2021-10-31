@@ -1,16 +1,40 @@
-// import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from "@angular/common/http/testing";
+import { TestBed } from "@angular/core/testing";
+import { Login, LoginToken } from "../model/login.model";
+import { AuthService } from "./auth.service"
 
-// import { AuthService } from './auth.service';
+describe('AuthService',()=>{
+    let authService: AuthService;
+    let httpMock: HttpTestingController;
 
-// describe('AuthService', () => {
-//   let service: AuthService;
+    beforeEach(()=>{
+        TestBed.configureTestingModule({
+            imports:[HttpClientTestingModule],
+            providers:[authService]
+        })
+        authService = TestBed.inject(AuthService)
+        httpMock = TestBed.inject(HttpTestingController)
+    })
 
-//   beforeEach(() => {
-//     TestBed.configureTestingModule({});
-//     service = TestBed.inject(AuthService);
-//   });
+    afterEach(()=>{
+        httpMock.verify()
+    })
 
-//   it('should be created', () => {
-//     expect(service).toBeTruthy();
-//   });
-// });
+    it('Should return Observable<LoginToken>', () => {
+        const url = '/api/auth/login';
+        const mockLogin: Login = {
+            username: 'admin',
+            password: 'admin'
+        }
+        const mockLoginToken: LoginToken = {
+            token: 'hvjVHvKVXDZWEfdwqt87625#@#@%ghdsxf'
+        }
+        authService.login(mockLogin)
+            .subscribe((response: LoginToken) => {
+                expect(response).toEqual(mockLoginToken);
+            })
+        const request = httpMock.expectOne(url);
+        expect(request.request.method).toBe('POST');
+        expect(request.request.body).toEqual(mockLogin);
+    });
+})

@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-app">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">Navbar</a>
+    <a class="navbar-brand" routerLink="/">
+    <span><img src="assets/image/stitch.svg" height="35" width="35" alt=""></span>
+    
+      Stitch's World</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -13,7 +16,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link" routerLink="/">Home</a>
         </li>
@@ -57,17 +60,17 @@
         </li>
 
         <li class="nav-item" *ngIf="isLoggedIn()">
-          <a class="nav-link" routerLink="/donate">Donate</a>
+          <a class="nav-link" routerLink="/donate">Donation</a>
+        </li>
+        <li class="nav-item"  *ngIf="isLoggedIn()">
+          <a class="nav-link" routerLink="/user-management">User Management</a>
         </li>
         <li class="nav-item" *ngIf="!isLoggedIn()">
           <a class="nav-link" routerLink="/auth/login">Login</a>
         </li>
         <li class="nav-item" *ngIf="isLoggedIn()">
           <a class="nav-link" routerLink="/auth/logout">Logout</a>
-        </li>
 
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/user-management">User Management</a>
         </li>
       </ul>
     </div>

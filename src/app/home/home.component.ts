@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  show: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  showModal(){
+    this.show = true
+  }
 }

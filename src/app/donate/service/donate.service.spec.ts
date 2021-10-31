@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import { TestBed } from '@angular/core/testing';
 
 // import { DonateService } from './donate.service';
@@ -14,3 +15,5 @@
 //     expect(service).toBeTruthy();
 //   });
 // });
+=======
+>>>>>>> 4bc131abf367b87ce56ea50c991abef92c914c66

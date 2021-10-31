@@ -22,7 +22,8 @@ export class DonateService {
   }
 
   public save(donation:Donation):Observable<Donation>{
-    return this.http.post<Donation>('/api/donations', donation)
+    // return this.http.post<Donation>('/api/donations', donation)
+    return this.http.post<Donation>('/api/pages/group3/donate', donation)
   }
 
   public listUpdated():Observable<boolean>{
