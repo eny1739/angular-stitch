@@ -3,6 +3,8 @@
 Stitch's World merupakan tugas kelompok yang melanjutkan dari apliaksi personal resume, dengan ada 2 tambahan modul sebagai tugas akhir kelas Angular
 
 ## Stitch Team
+## Filosofi Nama
+Stitch merupakan makhluk asing dari luar angkasa, yang berusaha untuk mempunyai keluarga. Stitch mempunyai banyak kekurangan. Stitch ingin bisa hidup berdampingan dengan manusia dan berteman. Pada akhirnya stitch mempunyai seorang teman bernama lilo. Walaupun stitch punya banyak kekurangan, tapi stitch berusaha untuk memperbaikinya, dengan dibantu oleh lilo. Usaha yang dilakukan stitch tidak semuanya berhasil, tapi stitch selalu berusaha semaksimal mungkin, walaupun terkadang stitch ingin menyerah dan putus asa namun pada akhirnya stitch tetap melakukannya hingga berhasil. Kami berharap kelompok kami juga seperti itu, walaupun kami berulang kali gagal dalam melakukan suatu hal, namun kami tidak pernah menyerah
 
 Kelompok kami terdiri dari 3 orang, yaitu :
 
